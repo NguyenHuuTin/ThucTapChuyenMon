@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
     SignInButton signInButton;
     GoogleSignInClient mGoogleSignInClient;
     int RC_SIGN_IN = 001;
-    EditText txtname, txtmail;
-    ImageView imvhinh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +48,7 @@ public class MainActivity extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         lblForgot = findViewById(R.id.lblforgot);
         lblRegistration = findViewById(R.id.lblforgot);
-        txtname = findViewById(R.id.txtname);
-        txtmail = findViewById(R.id.txtmail);
-        imvhinh = findViewById(R.id.imvhinh);
+
 
     }
 
@@ -102,14 +98,9 @@ public class MainActivity extends AppCompatActivity {
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+            Intent intent = new Intent(MainActivity.this, RegistrationActivity.class);
+            startActivity(intent);
 
-            GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-            if (acct != null) {
-                txtname.setText(acct.getDisplayName().toString());
-                txtmail.setText(acct.getEmail().toString());
-                Glide.with(this).load(String.valueOf(acct.getPhotoUrl())).into(imvhinh);
-
-            }
         } catch (ApiException e) {
             Log.w("error", "signInResult:failed code=" + e.getStatusCode());
         }
