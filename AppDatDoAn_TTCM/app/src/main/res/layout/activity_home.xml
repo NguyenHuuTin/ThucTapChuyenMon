@@ -18,116 +18,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:title="Trang Chính"
-                android:background="#4CAF50"
+                android:background="#6200EE"
                 android:id="@+id/Toolbar"/>
-            <ViewFlipper
-                android:id="@+id/viewflipper"
-                android:layout_width="match_parent"
-                android:layout_height="200dp">
-
-            </ViewFlipper>
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TableRow>
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:backgroundTint="@color/white"
-                        android:src="@drawable/rice"
-                        android:scaleType="fitCenter"/>
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:backgroundTint="@color/white"
-                        android:src="@drawable/noodle_icon"
-                        android:scaleType="fitCenter"/>
-
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:backgroundTint="@color/white"
-                        android:src="@drawable/snack_icon"
-                        android:scaleType="fitCenter"/>
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:backgroundTint="@color/white"
-                        android:src="@drawable/cake"
-                        android:scaleType="fitCenter"/>
-                </TableRow>
-                <TableRow>
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:backgroundTint="@color/white"
-                        android:src="@drawable/drink"
-                        android:scaleType="fitCenter"/>
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:backgroundTint="@color/white"
-                        android:src="@drawable/barbecue"
-                        android:scaleType="fitCenter"/>
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:backgroundTint="@color/white"
-                        android:src="@drawable/hotpot"
-                        android:scaleType="fitCenter"/>
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:backgroundTint="@color/white"
-                        android:scaleType="fitCenter"/>
-
-                </TableRow>
-            </TableLayout>
-            <LinearLayout
+<!--           <include-->
+<!--               android:layout_height="match_parent"-->
+<!--               android:layout_width="match_parent"-->
+<!--               layout="@layout/content_main"/>-->
+<!--                        <ViewFlipper-->
+<!--                        android:id="@+id/viewflipper"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="200dp">-->
+<!--                        </ViewFlipper>-->
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="sản phảm mới nhất"
-                    android:textSize="25sp"/>
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                android:id="@+id/fragmenthooome"/>
 
-                </androidx.recyclerview.widget.RecyclerView>
 
-            </LinearLayout>
+
+
         </LinearLayout>
         <com.google.android.material.navigation.NavigationView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:id="@+id/navigationview"
-            android:fitsSystemWindows="true">
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/nav_header_main">
             <ListView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/lvMenu">
-
+                android:id="@+id/lvMenu"
+                android:layout_marginTop="230dp">
             </ListView>
+
 
         </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>

@@ -1,46 +1,63 @@
 package com.nguyenhuutin.appdatdoan_ttcm;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.os.Bundle;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.Toast;
+import android.widget.ViewFlipper;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.os.Bundle;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.ViewFlipper;
-
 import com.google.android.material.navigation.NavigationView;
 import com.nguyenhuutin.adapter.menuAdapter;
+
+import com.nguyenhuutin.fragment.FragmentBook;
+import com.nguyenhuutin.fragment.FragmentHome;
+import com.nguyenhuutin.fragment.FragmentInfo;
+import com.nguyenhuutin.fragment.FragmentMap;
 import com.nguyenhuutin.model.itemMenu;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends AppCompatActivity {
-    ViewFlipper viewFlipper;
+
+public class HomeActivity extends AppCompatActivity{
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ListView lvMenu;
     ArrayList<itemMenu> arrayList;
     menuAdapter adapter;
+    private static final int FRAGMENT_HOME = 1;
+    private static final int FRAGMENT_BOOK = 2;
+    private static final int FRAGMENT_MAP = 3;
+    private static final int FRAGMENT_INFO = 4;
+    private int curron_fragment = FRAGMENT_HOME;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         addLink();
-        ActionViewFilipper();
         actionToolBar();
         actionMenu();
+        catchOnItemListView();
+        replaceFragment(new FragmentHome());
+
+
     }
 
     private void addLink() {
-        viewFlipper = findViewById(R.id.viewflipper);
         toolbar = findViewById(R.id.Toolbar);
         drawerLayout = findViewById(R.id.Drawlayout);
         navigationView = findViewById(R.id.navigationview);
@@ -62,38 +79,65 @@ public class HomeActivity extends AppCompatActivity {
 
     private void actionMenu() {
         arrayList = new ArrayList<>();
-        arrayList.add(new itemMenu("Trang Chính",R.drawable.noodle_icon));
-        arrayList.add(new itemMenu("Đặt Bàn",R.drawable.snack_icon));
-        arrayList.add(new itemMenu("Bản Đồ",R.drawable.cake));
-        arrayList.add(new itemMenu("Thông tin",R.drawable.barbecue));
-        arrayList.add(new itemMenu("Đăng Xuất",R.drawable.drink));
+        arrayList.add(new itemMenu("Trang Chính",R.drawable.house));
+        arrayList.add(new itemMenu("Đặt Bàn",R.drawable.clipboard));
+        arrayList.add(new itemMenu("Bản Đồ",R.drawable.map));
+        arrayList.add(new itemMenu("Thông tin",R.drawable.info));
+        arrayList.add(new itemMenu("Đăng Xuất",R.drawable.arrow));
         adapter = new menuAdapter(this,R.layout.item_menu,arrayList);
         lvMenu.setAdapter(adapter);
     }
 
-    private void ActionViewFilipper() {
-        ArrayList<String> arrayBaner = new ArrayList<>();
-        arrayBaner.add("https://chuphinhmonan.com/wp-content/uploads/2017/09/comtam.jpg");
-        arrayBaner.add("https://dichoinhatban.com/wp-content/uploads/2020/01/Takoyaki.jpg");
-        arrayBaner.add("https://nld.mediacdn.vn/thumb_w/540/2018/12/20/nhung-mon-an-viet-gay-dinh-dam-khi-xuat-hien-tren-bao-ngoai-nam-2018-hinh-5-15452927504911572495568.jpg");
-        arrayBaner.add("https://s3-us-west-1.amazonaws.com/dangnho/media/uploads/2020/05/26115155/tapchidangnho-summer-185219015212-am-thuc-mien-trung.jpg");
-        arrayBaner.add("https://chuphinhmonan.com/wp-content/uploads/2017/03/avalon-3-1.jpg");
-        arrayBaner.add("http://media.tinmoi.vn/2015/06/05/thuc-u%E1%BB%8Dng-mua-nong.jpg");
-        arrayBaner.add("https://noithat4mua.com/wp-content/uploads/2018/11/Mau-thiet-ke-quan-com-ga-van-phong-lacai-05.jpg");
-        arrayBaner.add("https://cosp.com.vn/uploaded/pv1148.jpg");
-        for (int i=0; i<arrayBaner.size();i++){
-            ImageView imageView = new ImageView(getApplicationContext());
-            Picasso.with(getApplicationContext()).load(arrayBaner.get(i)).into(imageView);
-            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-            viewFlipper.addView(imageView);
-        }
-        viewFlipper.setFlipInterval(4000);
-        viewFlipper.setAutoStart(true);
-        Animation animation_slide_in = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide_in_right);
-        Animation animation_slide_out = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide_out_right);
-        viewFlipper.setInAnimation(animation_slide_in);
-        viewFlipper.setOutAnimation(animation_slide_out);
+    private void catchOnItemListView() {
+        lvMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        if(FRAGMENT_HOME != curron_fragment){
+                            replaceFragment(new FragmentHome());
+                            curron_fragment = FRAGMENT_HOME;
+                            toolbar.setTitle("Trang Chính");
+                        }
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case 1:
+                        if(FRAGMENT_BOOK != curron_fragment){
+                            replaceFragment(new FragmentBook());
+                            curron_fragment = FRAGMENT_BOOK;
+                            toolbar.setTitle("Đặt Bàn");
+                        }
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case 2:
+                        if(FRAGMENT_MAP != curron_fragment){
+                            replaceFragment(new FragmentMap());
+                            curron_fragment = FRAGMENT_MAP;
+                            toolbar.setTitle("Bản Đồ");
+                        }
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case 3:
+                        if(FRAGMENT_INFO != curron_fragment){
+                            replaceFragment(new FragmentInfo());
+                            curron_fragment = FRAGMENT_INFO;
+                            toolbar.setTitle("Thông Tin");
+                        }
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case 4:
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
 
-
+                }
+            }
+        });
     }
+    private void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmenthooome,fragment);
+        fragmentTransaction.commit();
+    }
+
 }
