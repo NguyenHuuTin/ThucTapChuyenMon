@@ -3,16 +3,16 @@ package com.nguyenhuutin.appdatdoan_ttcm;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.widget.ViewFlipper;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -25,8 +25,9 @@ import com.nguyenhuutin.fragment.FragmentBook;
 import com.nguyenhuutin.fragment.FragmentHome;
 import com.nguyenhuutin.fragment.FragmentInfo;
 import com.nguyenhuutin.fragment.FragmentMap;
+import com.nguyenhuutin.model.Cart;
+import com.nguyenhuutin.model.Users;
 import com.nguyenhuutin.model.itemMenu;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -38,11 +39,14 @@ public class HomeActivity extends AppCompatActivity{
     ListView lvMenu;
     ArrayList<itemMenu> arrayList;
     menuAdapter adapter;
+
     private static final int FRAGMENT_HOME = 1;
     private static final int FRAGMENT_BOOK = 2;
     private static final int FRAGMENT_MAP = 3;
     private static final int FRAGMENT_INFO = 4;
     private int curron_fragment = FRAGMENT_HOME;
+    public static ArrayList<Cart> arrayListCart;
+//    public static Users users;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,7 @@ public class HomeActivity extends AppCompatActivity{
         replaceFragment(new FragmentHome());
 
 
+
     }
 
     private void addLink() {
@@ -62,6 +67,13 @@ public class HomeActivity extends AppCompatActivity{
         drawerLayout = findViewById(R.id.Drawlayout);
         navigationView = findViewById(R.id.navigationview);
         lvMenu = findViewById(R.id.lvMenu);
+        if (arrayListCart != null){
+
+        }else {
+            arrayListCart = new ArrayList<>();
+        }
+//        users = (Users) getIntent().getSerializableExtra("user");
+
     }
 
     private void actionToolBar() {
@@ -126,6 +138,7 @@ public class HomeActivity extends AppCompatActivity{
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case 4:
+                        Toast.makeText(HomeActivity.this, arrayListCart.size(), Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
@@ -140,4 +153,26 @@ public class HomeActivity extends AppCompatActivity{
         fragmentTransaction.commit();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.itemCart:
+                Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+                startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+//    @Override
+//    public void senData(String sdt, String name, String email, String pass) {
+//        FragmentChangPass fragmentChangPass = getSupportFragmentManager().findFragmentById()
+//    }
 }

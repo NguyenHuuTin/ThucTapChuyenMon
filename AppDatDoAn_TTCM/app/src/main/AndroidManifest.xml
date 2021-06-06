@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nguyenhuutin.appdatdoan_ttcm">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -12,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppDatDoAn_TTCM"
         android:usesCleartextTraffic="true">
-        <activity android:name=".BarBerCueActivity"></activity>
+        <activity android:name=".InfoUsersActivity"></activity>
+        <activity android:name=".CartActivity" />
+        <activity android:name=".ChangePassActivity" />
+        <activity android:name=".BarBerCueActivity" />
         <activity android:name=".HotPotActivity" />
         <activity android:name=".DrinkActivity" />
         <activity android:name=".SweetActivity" />
@@ -20,14 +24,6 @@
         <activity android:name=".NoodleActivity" />
         <activity android:name=".LunchBoxActivity" />
         <activity android:name=".HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".RegistrationActivity" />
-        <activity android:name=".MainActivity">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -35,6 +31,14 @@
 
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
+        </activity>
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

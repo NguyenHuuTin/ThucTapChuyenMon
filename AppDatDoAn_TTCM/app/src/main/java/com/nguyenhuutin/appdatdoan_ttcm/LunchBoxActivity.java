@@ -1,12 +1,16 @@
 package com.nguyenhuutin.appdatdoan_ttcm;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,29 +32,26 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class LunchBoxActivity extends AppCompatActivity {
-    ImageView imgBack, imgCart;
-    TextView txtTitleToolbar;
     RecyclerView recyclerViewLunchBox;
     ArrayList<Food> arrayFoods;
     FoodAdapter foodAdapter;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lunch_box);
         addLinks();
+        ActionToolbar();
         addEvents();
         GetDataFoods();
     }
 
     private void addLinks() {
-        imgBack = findViewById(R.id.imgBack);
-        imgCart = findViewById(R.id.imgCarts);
-        txtTitleToolbar = findViewById(R.id.txtTitleToolbar);
-        txtTitleToolbar.setText("Cơm Trưa");
+        toolbar = findViewById(R.id.ToolbarFood);
         recyclerViewLunchBox = findViewById(R.id.RecyclerViewLunchBox);
         arrayFoods = new ArrayList<>();
-        foodAdapter = new FoodAdapter(getApplicationContext(),arrayFoods);
+        foodAdapter = new FoodAdapter(LunchBoxActivity.this,arrayFoods);
         recyclerViewLunchBox.setHasFixedSize(true);
         recyclerViewLunchBox.setLayoutManager(new GridLayoutManager(getApplicationContext(),1));
         recyclerViewLunchBox.setAdapter(foodAdapter);
@@ -61,20 +62,34 @@ public class LunchBoxActivity extends AppCompatActivity {
     }
 
     private void addEvents() {
-        imgBack.setOnClickListener(new View.OnClickListener() {
+    }
+    private void ActionToolbar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setTitle("Cơm Trưa");
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LunchBoxActivity.this, HomeActivity.class);
+                finish();
+            }
+        });
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.itemCart:
+                Intent intent = new Intent(LunchBoxActivity.this, CartActivity.class);
                 startActivity(intent);
-
-            }
-        });
-        imgCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void GetDataFoods() {

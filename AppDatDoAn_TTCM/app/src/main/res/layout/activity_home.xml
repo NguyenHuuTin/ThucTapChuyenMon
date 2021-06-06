@@ -19,7 +19,8 @@
                 android:layout_height="?attr/actionBarSize"
                 app:title="Trang Chính"
                 android:background="#6200EE"
-                android:id="@+id/Toolbar"/>
+                android:id="@+id/Toolbar"
+                app:menu="@menu/menu" />
 <!--           <include-->
 <!--               android:layout_height="match_parent"-->
 <!--               android:layout_width="match_parent"-->

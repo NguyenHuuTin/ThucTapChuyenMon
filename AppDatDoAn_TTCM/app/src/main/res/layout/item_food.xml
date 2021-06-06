@@ -42,13 +42,13 @@
                         android:text="Tên món ăn"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:textSize="26sp"/>
+                        android:textSize="24sp"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="15dp">
+                    android:layout_marginTop="5dp">
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -58,11 +58,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="30000"
-                        android:textSize="24sp"
+                        android:textSize="22sp"
                         android:textColor="#FF9800"
                         android:layout_marginLeft="15dp"
                         android:padding="5dp" />
                 </LinearLayout>
+                <Button
+                    android:id="@+id/btnAddToCart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Thêm"
+                    android:backgroundTint="#4CAF50"
+                    android:drawableLeft="@drawable/ic_baseline_add_24"
+                    android:layout_gravity="right"
+                    android:focusable="false"/>
 
             </LinearLayout>
 

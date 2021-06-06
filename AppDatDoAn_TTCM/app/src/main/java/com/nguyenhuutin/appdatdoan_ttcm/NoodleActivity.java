@@ -1,11 +1,15 @@
 package com.nguyenhuutin.appdatdoan_ttcm;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,48 +31,61 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class NoodleActivity extends AppCompatActivity {
-    ImageView imgBack, imgCart;
-    TextView txtTitleToolbar;
+//    ImageView imgBack, imgCart;
+//    TextView txtTitleToolbar;
     RecyclerView recyclerViewNoodle;
     ArrayList<Food> arrayFoods;
     FoodAdapter foodAdapter;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_noodle);
         addLinks();
+        ActionToolbar();
         addEvents();
         GetDataFoods();
     }
 
     private void addLinks() {
-        imgBack = findViewById(R.id.imgBack);
-        imgCart = findViewById(R.id.imgCarts);
-        txtTitleToolbar = findViewById(R.id.txtTitleToolbar);
-        txtTitleToolbar.setText("Các Món Bún");
+        toolbar = findViewById(R.id.ToolbarFood);
         recyclerViewNoodle = findViewById(R.id.RecyclerViewNoodle);
         arrayFoods = new ArrayList<>();
-        foodAdapter = new FoodAdapter(getApplicationContext(),arrayFoods);
+        foodAdapter = new FoodAdapter(NoodleActivity.this,arrayFoods);
         recyclerViewNoodle.setHasFixedSize(true);
         recyclerViewNoodle.setLayoutManager(new GridLayoutManager(getApplicationContext(),1));
         recyclerViewNoodle.setAdapter(foodAdapter);
     }
     private void addEvents() {
-        imgBack.setOnClickListener(new View.OnClickListener() {
+    }
+    private void ActionToolbar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setTitle("Các Món Bún");
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NoodleActivity.this, HomeActivity.class);
+                finish();
+            }
+        });
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.itemCart:
+                Intent intent = new Intent(NoodleActivity.this, CartActivity.class);
                 startActivity(intent);
-
-            }
-        });
-        imgCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void GetDataFoods() {

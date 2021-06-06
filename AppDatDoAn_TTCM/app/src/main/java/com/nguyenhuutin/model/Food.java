@@ -1,6 +1,8 @@
 package com.nguyenhuutin.model;
 
-public class Food {
+import java.io.Serializable;
+
+public class Food implements Serializable {
     public int id;
     public String fooodName;
     public int Price;

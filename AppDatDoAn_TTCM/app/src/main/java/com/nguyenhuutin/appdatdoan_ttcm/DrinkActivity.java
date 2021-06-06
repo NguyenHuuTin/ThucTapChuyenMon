@@ -1,11 +1,15 @@
 package com.nguyenhuutin.appdatdoan_ttcm;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,29 +31,26 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class DrinkActivity extends AppCompatActivity {
-    ImageView imgBack, imgCart;
-    TextView txtTitleToolbar;
     RecyclerView recyclerViewDrink;
     ArrayList<Food> arrayFoods;
     FoodAdapter foodAdapter;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drink);
         addLinks();
+        ActionToolbar();
         GetDataFoods();
         addEvents();
     }
 
     private void addLinks() {
-        imgBack = findViewById(R.id.imgBack);
-        imgCart = findViewById(R.id.imgCarts);
-        txtTitleToolbar = findViewById(R.id.txtTitleToolbar);
-        txtTitleToolbar.setText("Đồ Uống");
+        toolbar = findViewById(R.id.ToolbarFood);
         recyclerViewDrink = findViewById(R.id.RecyclerViewDrink);
         arrayFoods = new ArrayList<>();
-        foodAdapter = new FoodAdapter(getApplicationContext(),arrayFoods);
+        foodAdapter = new FoodAdapter(DrinkActivity.this,arrayFoods);
         recyclerViewDrink.setHasFixedSize(true);
         recyclerViewDrink.setLayoutManager(new GridLayoutManager(getApplicationContext(),1));
         recyclerViewDrink.setAdapter(foodAdapter);
@@ -57,20 +58,34 @@ public class DrinkActivity extends AppCompatActivity {
     }
 
     private void addEvents() {
-        imgBack.setOnClickListener(new View.OnClickListener() {
+    }
+    private void ActionToolbar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setTitle("Đồ Uống");
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DrinkActivity.this, HomeActivity.class);
+                finish();
+            }
+        });
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.itemCart:
+                Intent intent = new Intent(DrinkActivity.this, CartActivity.class);
                 startActivity(intent);
-
-            }
-        });
-        imgCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void GetDataFoods() {
