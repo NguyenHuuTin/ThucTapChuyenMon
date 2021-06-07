@@ -72,22 +72,7 @@ public class InfoUsersActivity extends AppCompatActivity {
             @RequiresApi()
             @Override
             public void onClick(View v) {
-                JSONArray jsonArray = new JSONArray();
-                for (int i=0; i<HomeActivity.arrayListCart.size();i++){
-                    JSONObject jsonObject = new JSONObject();
-                    try {
-                        int priceAFood =(int) HomeActivity.arrayListCart.get(i).getPrice() / HomeActivity.arrayListCart.get(i).getSL();
-                        jsonObject.put("MaDH",1);
-                        jsonObject.put("MaMonAn", HomeActivity.arrayListCart.get(i).getID());
-                        jsonObject.put("SL",HomeActivity.arrayListCart.get(i).getSL());
-                        jsonObject.put("Gia",priceAFood);
-                        jsonObject.put("TongTien",HomeActivity.arrayListCart.get(i).getPrice());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    jsonArray.put(jsonObject);
-                }
-                edtName.setText(jsonArray.toString());
+               finish();
 
             }
         });

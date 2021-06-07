@@ -2,4 +2,6 @@
     <string name="app_name">AppDatDoAn_TTCM</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="map_api_key">AIzaSyDyRArgogFfaJuvDo-vTnOTA78MuSlGf6s</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,12 +20,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.nguyenhuutin.adapter.menuAdapter;
 
-import com.nguyenhuutin.fragment.FragmentBook;
 import com.nguyenhuutin.fragment.FragmentHome;
 import com.nguyenhuutin.fragment.FragmentInfo;
-import com.nguyenhuutin.fragment.FragmentMap;
+import com.nguyenhuutin.fragment.FragmentContactInfo;
 import com.nguyenhuutin.model.Cart;
-import com.nguyenhuutin.model.Users;
 import com.nguyenhuutin.model.itemMenu;
 
 import java.util.ArrayList;
@@ -57,9 +54,6 @@ public class HomeActivity extends AppCompatActivity{
         actionMenu();
         catchOnItemListView();
         replaceFragment(new FragmentHome());
-
-
-
     }
 
     private void addLink() {
@@ -92,9 +86,9 @@ public class HomeActivity extends AppCompatActivity{
     private void actionMenu() {
         arrayList = new ArrayList<>();
         arrayList.add(new itemMenu("Trang Chính",R.drawable.house));
-        arrayList.add(new itemMenu("Đặt Bàn",R.drawable.clipboard));
-        arrayList.add(new itemMenu("Bản Đồ",R.drawable.map));
-        arrayList.add(new itemMenu("Thông tin",R.drawable.info));
+        arrayList.add(new itemMenu("Thông Tin",R.drawable.info));
+        arrayList.add(new itemMenu("Liên Hệ",R.drawable.contact));
+        arrayList.add(new itemMenu("Tài Khoản",R.drawable.user));
         arrayList.add(new itemMenu("Đăng Xuất",R.drawable.arrow));
         adapter = new menuAdapter(this,R.layout.item_menu,arrayList);
         lvMenu.setAdapter(adapter);
@@ -115,17 +109,20 @@ public class HomeActivity extends AppCompatActivity{
                         break;
                     case 1:
                         if(FRAGMENT_BOOK != curron_fragment){
-                            replaceFragment(new FragmentBook());
+//                            replaceFragment(new FragmentBook());
+//                            curron_fragment = FRAGMENT_BOOK;
+//                            toolbar.setTitle("Đặt Bàn");
                             curron_fragment = FRAGMENT_BOOK;
-                            toolbar.setTitle("Đặt Bàn");
+                            Intent intent = new Intent(HomeActivity.this, MapsActivity.class);
+                            startActivity(intent);
                         }
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case 2:
                         if(FRAGMENT_MAP != curron_fragment){
-                            replaceFragment(new FragmentMap());
+                            replaceFragment(new FragmentContactInfo());
                             curron_fragment = FRAGMENT_MAP;
-                            toolbar.setTitle("Bản Đồ");
+                            toolbar.setTitle("Thông Tin Liên Hệ");
                         }
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
@@ -138,7 +135,8 @@ public class HomeActivity extends AppCompatActivity{
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case 4:
-                        Toast.makeText(HomeActivity.this, arrayListCart.size(), Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(HomeActivity.this,MainActivity.class);
+                        startActivity(intent);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
@@ -170,9 +168,4 @@ public class HomeActivity extends AppCompatActivity{
     }
 
 
-
-//    @Override
-//    public void senData(String sdt, String name, String email, String pass) {
-//        FragmentChangPass fragmentChangPass = getSupportFragmentManager().findFragmentById()
-//    }
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".InfoUsersActivity"
     android:orientation="vertical"
-    android:background="#2196F3">
+    android:background="@drawable/slide_nav_bar">
     <LinearLayout
         android:gravity="center"
         android:background="@drawable/boder"
