@@ -1,7 +1,7 @@
 package com.nguyenhuutin.ultil;
 
 public class Server {
-    public static String localhost = "172.17.119.241:8080";
+    public static String localhost = "172.17.118.219:8080";
     public static String pathNewFood = "http://" + localhost + "/Server/SanPhamMoiNhat.php";
     public static String pathFoodLunchBox = "http://" + localhost + "/Server/GetDataLunchBox.php";
     public static String pathFoodNoodle = "http://" + localhost + "/Server/GetDataNoodle.php";

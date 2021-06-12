@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_home"
+        android:title="Home"
+        android:icon="@drawable/baseline_home_white_20" />
+    <item
+        android:id="@+id/action_cart"
+        android:title="cart"
+        android:icon="@drawable/baseline_shopping_cart_white_20" />
+    <item
+        android:id="@+id/action_search"
+        android:title="search"
+        android:icon="@drawable/baseline_search_white_20" />
+    <item
+        android:id="@+id/action_contect"
+        android:title="contect"
+        android:icon="@drawable/baseline_account_circle_white_20" />
+</menu>

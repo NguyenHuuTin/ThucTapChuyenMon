@@ -4,13 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +25,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.nguyenhuutin.adapter.FoodAdapter;
 import com.nguyenhuutin.model.Food;
+import com.nguyenhuutin.ultil.AnimationUltil;
 import com.nguyenhuutin.ultil.Server;
 
 import org.json.JSONArray;
@@ -37,6 +41,8 @@ public class NoodleActivity extends AppCompatActivity {
     ArrayList<Food> arrayFoods;
     FoodAdapter foodAdapter;
     Toolbar toolbar;
+    View viewEndAnimation;
+    ImageView viewAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +57,34 @@ public class NoodleActivity extends AppCompatActivity {
     private void addLinks() {
         toolbar = findViewById(R.id.ToolbarFood);
         recyclerViewNoodle = findViewById(R.id.RecyclerViewNoodle);
+        viewEndAnimation = findViewById(R.id.view_end_animation);
+        viewAnimation = findViewById(R.id.view_animation);
         arrayFoods = new ArrayList<>();
-        foodAdapter = new FoodAdapter(NoodleActivity.this,arrayFoods);
-        recyclerViewNoodle.setHasFixedSize(true);
-        recyclerViewNoodle.setLayoutManager(new GridLayoutManager(getApplicationContext(),1));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
+        recyclerViewNoodle.setLayoutManager(linearLayoutManager);
+        foodAdapter = new FoodAdapter(this, arrayFoods, new FoodAdapter.IClickAddToCartListener() {
+            @Override
+            public void onClickAddToCart(ImageView imgAddToCa, Food food) {
+                AnimationUltil.translateAnimation(viewAnimation, imgAddToCa, viewEndAnimation, new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+
+            }
+        });
+
         recyclerViewNoodle.setAdapter(foodAdapter);
     }
     private void addEvents() {
@@ -66,7 +96,8 @@ public class NoodleActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent =new Intent(NoodleActivity.this, HomeActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -81,9 +112,7 @@ public class NoodleActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.itemCart:
-                Intent intent = new Intent(NoodleActivity.this, CartActivity.class);
-                startActivity(intent);
+
         }
         return super.onOptionsItemSelected(item);
     }

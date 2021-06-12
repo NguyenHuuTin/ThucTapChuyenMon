@@ -8,6 +8,7 @@ public class Food implements Serializable {
     public int Price;
     public String imgFood;
     public int typeOfFood;
+    private boolean isAddToCart;
 
     public Food() {
     }
@@ -58,5 +59,13 @@ public class Food implements Serializable {
 
     public void setTypeOfFood(int typeOfFood) {
         this.typeOfFood = typeOfFood;
+    }
+
+    public boolean isAddToCart() {
+        return isAddToCart;
+    }
+
+    public void setAddToCart(boolean addToCart) {
+        isAddToCart = addToCart;
     }
 }

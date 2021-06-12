@@ -1,6 +1,5 @@
 package com.nguyenhuutin.fragment;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,7 +41,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class FragmentHome extends Fragment{
+public class FragmentHome extends Fragment {
     ImageButton btnLunchBox, btnNoodle, btnCake, btnSweet, btnDrink, btnHotPot, btnBarbecue;
     RecyclerView recyclerViewHome;
     ViewFlipper viewFlipper;

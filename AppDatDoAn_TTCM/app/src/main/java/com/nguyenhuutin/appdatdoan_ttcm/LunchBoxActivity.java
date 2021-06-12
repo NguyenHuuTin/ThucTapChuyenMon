@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.nguyenhuutin.adapter.FoodAdapter;
 import com.nguyenhuutin.model.Food;
+import com.nguyenhuutin.ultil.AnimationUltil;
 import com.nguyenhuutin.ultil.Server;
 
 import org.json.JSONArray;
@@ -36,6 +38,8 @@ public class LunchBoxActivity extends AppCompatActivity {
     ArrayList<Food> arrayFoods;
     FoodAdapter foodAdapter;
     Toolbar toolbar;
+    View viewEndAnimation;
+    ImageView viewAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,15 +55,49 @@ public class LunchBoxActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.ToolbarFood);
         recyclerViewLunchBox = findViewById(R.id.RecyclerViewLunchBox);
         arrayFoods = new ArrayList<>();
-        foodAdapter = new FoodAdapter(LunchBoxActivity.this,arrayFoods);
-        recyclerViewLunchBox.setHasFixedSize(true);
-        recyclerViewLunchBox.setLayoutManager(new GridLayoutManager(getApplicationContext(),1));
-        recyclerViewLunchBox.setAdapter(foodAdapter);
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
-//        recyclerViewLunchBox.setLayoutManager(linearLayoutManager);
+        viewEndAnimation = findViewById(R.id.view_end_animation);
+        viewAnimation = findViewById(R.id.view_animation);
+//        foodAdapter = new FoodAdapter(LunchBoxActivity.this,arrayFoods);
+//        recyclerViewLunchBox.setHasFixedSize(true);
+//        recyclerViewLunchBox.setLayoutManager(new GridLayoutManager(getApplicationContext(),1));
 //        recyclerViewLunchBox.setAdapter(foodAdapter);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
+        recyclerViewLunchBox.setLayoutManager(linearLayoutManager);
+        foodAdapter = new FoodAdapter(this, arrayFoods, new FoodAdapter.IClickAddToCartListener() {
+            @Override
+            public void onClickAddToCart(ImageView imgAddToCa, Food food) {
+                AnimationUltil.translateAnimation(viewAnimation, imgAddToCa, viewEndAnimation, new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+
+            }
+        });
+
+        recyclerViewLunchBox.setAdapter(foodAdapter);
 
     }
+
+//    public View getViewEndAnimation() {
+//        return viewEndAnimation;
+//    }
+//
+//    public ImageView getViewAnimation() {
+//        return viewAnimation;
+//    }
 
     private void addEvents() {
     }
@@ -70,7 +108,9 @@ public class LunchBoxActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+//                finish();
+                Intent intent = new Intent(LunchBoxActivity.this, HomeActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -85,9 +125,7 @@ public class LunchBoxActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.itemCart:
-                Intent intent = new Intent(LunchBoxActivity.this, CartActivity.class);
-                startActivity(intent);
+
         }
         return super.onOptionsItemSelected(item);
     }

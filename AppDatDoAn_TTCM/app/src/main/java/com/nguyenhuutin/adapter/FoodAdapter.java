@@ -1,22 +1,17 @@
 package com.nguyenhuutin.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.nguyenhuutin.appdatdoan_ttcm.CakeActivity;
-import com.nguyenhuutin.appdatdoan_ttcm.CartActivity;
 import com.nguyenhuutin.appdatdoan_ttcm.HomeActivity;
-import com.nguyenhuutin.appdatdoan_ttcm.MainActivity;
 import com.nguyenhuutin.appdatdoan_ttcm.R;
 import com.nguyenhuutin.model.Cart;
 import com.nguyenhuutin.model.Food;
@@ -28,13 +23,19 @@ import java.util.ArrayList;
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ItemHolder> {
     Context context;
     ArrayList<Food> arrayFood;
+    private IClickAddToCartListener iClickAddToCartListener;
+    public interface IClickAddToCartListener{
+        void onClickAddToCart(ImageView imgAddToCart, Food food);
+    }
 
     public FoodAdapter() {
     }
 
-    public FoodAdapter(Context context, ArrayList<Food> arrayFood) {
+    public FoodAdapter(Context context, ArrayList<Food> arrayFood, IClickAddToCartListener listener) {
         this.context = context;
         this.arrayFood = arrayFood;
+        this.iClickAddToCartListener = listener;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -58,6 +59,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ItemHolder> {
         holder.btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                iClickAddToCartListener.onClickAddToCart(holder.btnAddToCart,food);
                  if(HomeActivity.arrayListCart.size()>0){
                      boolean exists =false;
                      for (int i=0; i< HomeActivity.arrayListCart.size();i++){
@@ -72,13 +74,13 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ItemHolder> {
                      }
                      if (exists ==false) {
                          HomeActivity.arrayListCart.add(new Cart(food.getId(), food.getFooodName(), food.getPrice(), food.getImgFood(), 1));
+                         HomeActivity.mCountFood = HomeActivity.getmCountFood() + 1;
                      }
                  }else {
                      HomeActivity.arrayListCart.add(new Cart(food.getId(),food.getFooodName(),food.getPrice(),food.getImgFood(),1));
+                     HomeActivity.mCountFood = 1;
 
                  }
-                Intent intent = new Intent(context, CartActivity.class);
-                context.startActivity(intent);
             }
         });
 
@@ -92,16 +94,15 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ItemHolder> {
     }
 
     public class ItemHolder extends RecyclerView.ViewHolder {
-        public ImageView imgfood;
+        public ImageView imgfood, btnAddToCart;
         public TextView txtfoodName, txtprice;
-        public Button btnAddToCart;
 
         public ItemHolder(@NonNull View itemView) {
             super(itemView);
             imgfood = (ImageView)itemView.findViewById(R.id.imgFood);
             txtfoodName = (TextView)itemView.findViewById(R.id.txtFoodName);
             txtprice = (TextView)itemView.findViewById(R.id.txtPrice);
-            btnAddToCart = (Button)itemView.findViewById(R.id.btnAddToCart);
+            btnAddToCart = (ImageView) itemView.findViewById(R.id.btnAddToCart);
         }
     }
 }

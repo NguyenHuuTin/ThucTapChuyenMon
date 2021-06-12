@@ -35,9 +35,11 @@ import java.util.Map;
 
 public class RegistrationActivity extends AppCompatActivity {
     Button btnNext;
-    EditText txtSDT, txtname, txtmail, txtpassword, txtpassAgain;
-    ImageView imvhinh;
+    EditText txtSDT, txtpassword, txtpassAgain;
     Users users;
+    private String email;
+    private String name;
+
 
 
     @Override
@@ -53,20 +55,14 @@ public class RegistrationActivity extends AppCompatActivity {
     private void getInfomation() {
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if (acct != null) {
-
-                txtname.setText(acct.getDisplayName().toString());
-                txtmail.setText(acct.getEmail().toString());
-                Picasso.with(this).load(String.valueOf(acct.getPhotoUrl())).into(imvhinh);
-
+                name = acct.getDisplayName().toString();
+                email = acct.getEmail().toString();
         }
     }
 
     private void addLink() {
         btnNext = findViewById(R.id.btnNext);
         txtSDT = findViewById(R.id.txtSDT);
-        txtname = findViewById(R.id.txtname);
-        txtmail = findViewById(R.id.txtmail);
-        imvhinh = findViewById(R.id.imvhinh);
         txtpassword = findViewById(R.id.txtpassword);
         txtpassAgain = findViewById(R.id.txtpasAgain);
     }
@@ -78,10 +74,8 @@ public class RegistrationActivity extends AppCompatActivity {
                 if (!txtSDT.getText().toString().isEmpty() && !txtpassword.getText().toString().isEmpty() && !txtpassAgain.getText().toString().isEmpty()){
                     if (txtpassword.getText().toString().equalsIgnoreCase(txtpassAgain.getText().toString())){
                         String SDT = txtSDT.getText().toString().trim();
-                        String Email = txtmail.getText().toString().trim();
-                        String Name = txtname.getText().toString().trim();
                         String Pass = txtpassword.getText().toString().trim();
-                        MainActivity.users = new Users(SDT,Email,Name,Pass,2);
+                        MainActivity.users = new Users(SDT,email,name,Pass,2);
                         insertDataUsers();
                     }
                     else {
@@ -107,14 +101,12 @@ public class RegistrationActivity extends AppCompatActivity {
                             Toast.makeText(RegistrationActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                             Intent intent =  new Intent(RegistrationActivity.this, HomeActivity.class);
                             String SDT = txtSDT.getText().toString().trim();
-                            String Email = txtmail.getText().toString().trim();
-                            String Name = txtname.getText().toString().trim();
                             String Pass = txtpassword.getText().toString().trim();
 //                            intent.putExtra("SDT",SDT);
 //                            intent.putExtra("Email",Email);
 //                            intent.putExtra("Name",Name);
 //                            intent.putExtra("Pass",Pass);
-                            users = new Users(SDT,Email,Name,Pass,2);
+                            users = new Users(SDT,email,name,Pass,2);
                             intent.putExtra("user",users);
                             startActivity(intent);
                         }
@@ -138,9 +130,9 @@ public class RegistrationActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("SDT",txtSDT.getText().toString().trim());
-                params.put("UserName", txtname.getText().toString().trim());
+                params.put("UserName", name);
                 params.put("Password", txtpassword.getText().toString().trim());
-                params.put("Email", txtmail.getText().toString().trim());
+                params.put("Email", email);
                 return params;
             }
         };

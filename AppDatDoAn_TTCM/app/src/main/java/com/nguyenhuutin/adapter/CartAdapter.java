@@ -6,22 +6,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 
-import com.nguyenhuutin.appdatdoan_ttcm.CartActivity;
 import com.nguyenhuutin.appdatdoan_ttcm.HomeActivity;
 import com.nguyenhuutin.appdatdoan_ttcm.R;
+import com.nguyenhuutin.fragment.FragmentCart;
 import com.nguyenhuutin.model.Cart;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 public class CartAdapter extends BaseAdapter {
     Context context;
@@ -106,7 +104,7 @@ public class CartAdapter extends BaseAdapter {
                 HomeActivity.arrayListCart.get(position).setPrice(newPrice);
                 DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
                 finalViewHolder.txtPriceCart.setText(decimalFormat.format(newPrice) + "đ");
-                CartActivity.EventUtil();
+                FragmentCart.EventUtil();
                 if (newSL > 9){
                     finalViewHolder.btnplus.setVisibility(View.INVISIBLE);
                     finalViewHolder.btnminus.setVisibility(View.VISIBLE);
@@ -129,7 +127,7 @@ public class CartAdapter extends BaseAdapter {
                 HomeActivity.arrayListCart.get(position).setPrice(newPrice);
                 DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
                 finalViewHolder.txtPriceCart.setText(decimalFormat.format(newPrice) + "đ");
-                CartActivity.EventUtil();
+                FragmentCart.EventUtil();
                 if (newSL < 2){
                     finalViewHolder.btnminus.setVisibility(View.INVISIBLE);
                     finalViewHolder.btnplus.setVisibility(View.VISIBLE);
@@ -151,18 +149,18 @@ public class CartAdapter extends BaseAdapter {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if(HomeActivity.arrayListCart.size() <=0){
-                            CartActivity.txtnotification.setVisibility(View.VISIBLE);
+                            FragmentCart.txtnotification.setVisibility(View.VISIBLE);
                         }
                         else {
                             HomeActivity.arrayListCart.remove(position);
-                            CartActivity.cartAdapter.notifyDataSetChanged();
-                            CartActivity.EventUtil();
+                            FragmentCart.cartAdapter.notifyDataSetChanged();
+                            FragmentCart.EventUtil();
                             if (HomeActivity.arrayListCart.size() <= 0){
-                                CartActivity.txtnotification.setVisibility(View.VISIBLE);
+                                FragmentCart.txtnotification.setVisibility(View.VISIBLE);
                             }else {
-                                CartActivity.txtnotification.setVisibility(View.INVISIBLE);
-                                CartActivity.cartAdapter.notifyDataSetChanged();
-                                CartActivity.EventUtil();
+                                FragmentCart.txtnotification.setVisibility(View.INVISIBLE);
+                                FragmentCart.cartAdapter.notifyDataSetChanged();
+                                FragmentCart.EventUtil();
                             }
                         }
                     }
@@ -170,8 +168,8 @@ public class CartAdapter extends BaseAdapter {
                 builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        CartActivity.cartAdapter.notifyDataSetChanged();
-                        CartActivity.EventUtil();
+                        FragmentCart.cartAdapter.notifyDataSetChanged();
+                        FragmentCart.EventUtil();
                     }
                 });
                 builder.show();

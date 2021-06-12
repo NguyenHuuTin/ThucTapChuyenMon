@@ -6,91 +6,89 @@
     android:layout_height="match_parent"
     tools:context=".RegistrationActivity"
     android:orientation="vertical"
-    android:background="#379C8D">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Đăng Ký"
-        android:textSize="30sp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="20dp"/>
-<!--    <EditText-->
-<!--        android:id="@+id/txtuserName"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:hint="Họ Và Tên"-->
-<!--        android:textSize="22sp"-->
-<!--        android:layout_marginRight="40dp"-->
-<!--        android:layout_marginLeft="40dp"-->
-<!--        android:layout_marginBottom="20dp" />-->
-    <EditText
-        android:id="@+id/txtSDT"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Số Điện Thoại"
-        android:textSize="22sp"
-        android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="20dp" />
-    <EditText
-        android:id="@+id/txtpassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Mật Khẩu"
-        android:textSize="22sp"
-        android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="20dp" />
-    <EditText
-        android:id="@+id/txtpasAgain"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nhập lại Mật Khẩu"
-        android:textSize="22sp"
-        android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="20dp" />
-    <EditText
-        android:id="@+id/txtname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginBottom="20dp"
-        android:textSize="22sp"/>
-
-    <EditText
-        android:id="@+id/txtmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="22sp"
-        android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="20dp"/>
+    android:background="@drawable/login3">
 
     <ImageView
-        android:id="@+id/imvhinh"
-        android:layout_width="match_parent"
-        android:layout_height="230dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginBottom="20dp" />
-    <Button
-        android:id="@+id/btnNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tiếp tục"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         android:layout_gravity="center"
-        android:textSize="20sp"
-        android:backgroundTint="#73CF77"/>
+        android:layout_marginTop="50dp"
+        android:src="@drawable/scooter3" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="65dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="100dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:text="Đăng Ký"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:textColor="#00383f"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="30dp">
+                <EditText
+                    android:id="@+id/txtSDT"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Số Điện Thoại"
+                    android:textSize="22sp"
+                    android:background="@color/white"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="30dp">
+                <EditText
+                    android:id="@+id/txtpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Mật Khẩu"
+                    android:textSize="22sp"
+                    android:background="@color/white"/>
 
-<!--    <FrameLayout-->
-<!--        android:id="@+id/FrameContent"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="200dp"-->
-<!--        android:layout_marginLeft="40dp"-->
-<!--        android:layout_marginRight="40dp"-->
-<!--        android:layout_marginBottom="20dp"-->
-<!--        android:layout_marginTop="20sp"/>-->
+            </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="30dp">
+                <EditText
+                    android:id="@+id/txtpasAgain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nhập lại Mật Khẩu"
+                    android:textSize="22sp"
+                    android:background="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đăng ký"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:backgroundTint="#00383f"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </LinearLayout>

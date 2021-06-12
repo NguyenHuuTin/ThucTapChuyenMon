@@ -1,6 +1,5 @@
 package com.nguyenhuutin.fragment;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,11 +9,12 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.nguyenhuutin.appdatdoan_ttcm.R;
 
-public class FragmentContactInfo extends Fragment{
+public class FragmentContactInfo extends Fragment {
     CardView cardViewSDT, cardViewEmail;
     View view;
 

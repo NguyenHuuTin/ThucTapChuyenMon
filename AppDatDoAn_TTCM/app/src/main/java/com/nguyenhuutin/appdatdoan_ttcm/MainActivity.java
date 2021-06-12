@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (v.getId() == R.id.btnLoginForGoogle){
                     signIn();
+
                 }
             }
         });
@@ -115,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     users = new Users(SDT,Email,Name,Pass,2);
 //                    intent.putExtra("user",arrayUsers.get(position));
                     startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 }
             }
         });
@@ -165,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray response) {
                 if (response != null){
+                    Toast.makeText(MainActivity.this, "có dữ liệu", Toast.LENGTH_SHORT).show();
                     String SDT ="";
                     String Email ="";
                     String UserName ="";
@@ -185,11 +188,16 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
+                else {
+                    Toast.makeText(MainActivity.this, "không có dữ liệu", Toast.LENGTH_SHORT).show();
+                }
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity.this, "lỗi Get Data", Toast.LENGTH_SHORT).show();
+                Log.d("Data",error.toString());
             }
         });
         requestQueue.add(jsonArrayRequest);
