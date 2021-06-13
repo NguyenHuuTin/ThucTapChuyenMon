@@ -11,11 +11,33 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_alignParentTop="true"
-        android:background="#0093c4"
-        app:menu="@menu/menu"
+        android:background="@color/toolbarColor"
         app:titleTextColor="@color/white"
-        app:title="Home"
+        app:title="Food Order App"
         />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:gravity="center">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgUser"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/baseline_account_circle_white_20"/>
+        <TextView
+            android:id="@+id/NameUsers"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:text="Tên Nguoi dung"
+            android:textSize="12sp"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"/>
+
+    </LinearLayout>
 <!--    <androidx.cardview.widget.CardView-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="150dp"-->
@@ -48,10 +70,8 @@
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#FF5722"
-        app:itemIconTint="@color/custum_color_bottom_nav"
-        app:itemTextColor="@color/custum_color_bottom_nav"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:background="@color/toolbarColor"/>
 
 <!--    app:menu="@menu/menu_bottom_nav"-->
 <!--        <androidx.drawerlayout.widget.DrawerLayout-->

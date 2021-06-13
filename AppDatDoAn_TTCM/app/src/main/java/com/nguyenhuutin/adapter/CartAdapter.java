@@ -25,6 +25,9 @@ public class CartAdapter extends BaseAdapter {
     Context context;
     ArrayList<Cart> arrayListCart;
 
+    public CartAdapter() {
+    }
+
     public CartAdapter(Context context, ArrayList<Cart> arrayListCart) {
         this.context = context;
         this.arrayListCart = arrayListCart;
@@ -33,6 +36,7 @@ public class CartAdapter extends BaseAdapter {
     @Override
     public int getCount() {
         return arrayListCart.size();
+
     }
 
     @Override
@@ -163,6 +167,9 @@ public class CartAdapter extends BaseAdapter {
                                 FragmentCart.EventUtil();
                             }
                         }
+                        HomeActivity.mCountFood --;
+                        HomeActivity.checkCountFood();
+
                     }
                 });
                 builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {

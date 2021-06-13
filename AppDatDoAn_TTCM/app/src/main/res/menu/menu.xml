@@ -2,8 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/itemCart"
-        android:title="Giỏ Hàng"
+        android:id="@+id/itemImgUser"
+        android:title="Hinh anh"
         app:showAsAction="always"
-        android:icon="@drawable/ic_baseline_shopping_cart_24"/>
+        android:icon="@drawable/baseline_account_circle_white_20"/>
+    <item
+        android:id="@+id/itemNameUser"
+        android:title="Tên"
+        app:showAsAction="always"/>
 </menu>

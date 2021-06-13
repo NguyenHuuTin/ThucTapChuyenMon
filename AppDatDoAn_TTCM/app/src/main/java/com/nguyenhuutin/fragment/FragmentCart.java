@@ -23,10 +23,10 @@ import java.text.DecimalFormat;
 
 public class FragmentCart extends Fragment {
     View view;
-    ListView lvCart;
+    public ListView lvCart;
     public static TextView txtnotification;
     static TextView txtToltalMoney;
-    Button btnNextBuy, btnOrder;
+    Button  btnOrder;
     public static CartAdapter cartAdapter;
     @Nullable
     @Override
@@ -40,13 +40,6 @@ public class FragmentCart extends Fragment {
     }
 
     private void addEvents() {
-        btnNextBuy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), HomeActivity.class);
-                startActivity(intent);
-            }
-        });
         btnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +58,6 @@ public class FragmentCart extends Fragment {
         lvCart = view.findViewById(R.id.lvCart);
         txtnotification = view.findViewById(R.id.txtnotification);
         txtToltalMoney = view.findViewById(R.id.txtToltalMoney);
-        btnNextBuy = view.findViewById(R.id.btnNextBuy);
         btnOrder = view.findViewById(R.id.btnOrder);
         cartAdapter = new CartAdapter(getActivity(), HomeActivity.arrayListCart);
         cartAdapter.notifyDataSetChanged();

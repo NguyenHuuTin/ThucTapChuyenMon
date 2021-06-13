@@ -11,6 +11,7 @@ import com.nguyenhuutin.fragment.FragmentCart;
 import com.nguyenhuutin.fragment.FragmentContactInfo;
 import com.nguyenhuutin.fragment.FragmentHome;
 import com.nguyenhuutin.fragment.FragmentInfo;
+import com.nguyenhuutin.fragment.FragmentSearch;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
@@ -28,7 +29,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             case 1:
                 return new FragmentCart();
             case 2:
-                return new FragmentInfo();
+                return new FragmentSearch();
             case 3:
                 return new FragmentBook();
             default:

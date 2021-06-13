@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     int RC_SIGN_IN = 001;
     ArrayList<Users> arrayUsers;
     public static Users users;
+    public static String img = "none";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         arrayUsers = new ArrayList<>();
+        users = new Users();
 
 //        signInButton = findViewById(R.id.sign_in_button);
 //        signInButton.setSize(SignInButton.SIZE_STANDARD);
@@ -108,13 +110,14 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
                 }
                 else {
+                    GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(MainActivity.this);
                     Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                     String SDT = arrayUsers.get(position).getSDT().toString().trim();
                     String Email = arrayUsers.get(position).getEmail().toString().trim();
                     String Name = arrayUsers.get(position).getUserName().toString().trim();
                     String Pass = arrayUsers.get(position).getPassword().toString().trim();
                     users = new Users(SDT,Email,Name,Pass,2);
-//                    intent.putExtra("user",arrayUsers.get(position));
+                    img = acct.getPhotoUrl().toString();
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 }
@@ -150,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
                 String Email = arrayUsers.get(position).getEmail().toString().trim();
                 String Name = arrayUsers.get(position).getUserName().toString().trim();
                 String Pass = arrayUsers.get(position).getPassword().toString().trim();
+                img = account.getPhotoUrl().toString();
                 users = new Users(SDT,Email,Name,Pass,2);
 //                intent.putExtra("user",arrayUsers.get(position));
                 startActivity(intent);
@@ -225,5 +229,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return position;
+    }
+
+    public static String getImg() {
+        return img;
     }
 }

@@ -8,37 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:title="Trang Chính"
-        android:background="#6200EE"
-        android:id="@+id/ToolbarFood"
-        app:menu="@menu/menu" />
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:padding="16dp">-->
-<!--        <ImageView-->
-<!--            android:id="@+id/imgBack"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:src="@drawable/back"-->
-<!--            android:layout_centerVertical="true"/>-->
-<!--        <TextView-->
-<!--            android:id="@+id/txtTitleToolbar"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Cơm Trưa"-->
-<!--            android:textSize="20sp"-->
-<!--            android:layout_marginStart="16dp"-->
-<!--            android:layout_toEndOf="@+id/imgBack"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textStyle="bold"/>-->
-<!--        <ImageView-->
-<!--            android:id="@+id/imgCarts"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:src="@drawable/ic_baseline_shopping_cart_24"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:layout_centerVertical="true"/>-->
-<!--    </RelativeLayout>-->
-
+        app:titleTextColor="@color/white"
+        android:background="@color/toolbarColor"
+        android:id="@+id/ToolbarFood"/>
 
 </RelativeLayout>

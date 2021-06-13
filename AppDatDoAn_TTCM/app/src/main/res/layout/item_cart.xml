@@ -13,8 +13,9 @@
             android:id="@+id/imgViewCart"
             android:layout_margin="5dp"
             android:adjustViewBounds="true"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"/>
     </LinearLayout>
     <LinearLayout
         android:layout_margin="5dp"
@@ -53,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:text="30000"
                 android:textSize="15sp"
-                android:textColor="#FF9800"
+                android:textColor="#021EB8"
                 android:layout_marginLeft="15dp"
                 android:padding="5dp" />
         </LinearLayout>

@@ -15,10 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/foodAdapter"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"
         android:layout_below="@id/inclutoolbar">
-
     </androidx.recyclerview.widget.RecyclerView>
     <View
         android:id="@+id/view_end_animation"

@@ -100,6 +100,8 @@ public class InfoUsersActivity extends AppCompatActivity {
                                         Log.d("test",response);
                                         if (response.equals("1")){
                                             HomeActivity.arrayListCart.clear();
+                                            HomeActivity.mCountFood = 0;
+                                            HomeActivity.checkCountFood();
                                             CheckConnection.ShowToast_Short(getApplicationContext(),"Bạn đã thêm dữ liệu giỏ hàng thành công");
                                             Intent intent = new Intent(InfoUsersActivity.this, HomeActivity.class);
                                             startActivity(intent);

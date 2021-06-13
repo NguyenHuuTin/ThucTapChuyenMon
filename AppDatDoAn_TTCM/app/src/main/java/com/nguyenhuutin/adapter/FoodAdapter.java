@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhuutin.appdatdoan_ttcm.HomeActivity;
 import com.nguyenhuutin.appdatdoan_ttcm.R;
+import com.nguyenhuutin.fragment.FragmentCart;
 import com.nguyenhuutin.model.Cart;
 import com.nguyenhuutin.model.Food;
 import com.squareup.picasso.Picasso;
@@ -60,27 +61,40 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ItemHolder> {
             @Override
             public void onClick(View v) {
                 iClickAddToCartListener.onClickAddToCart(holder.btnAddToCart,food);
+                FragmentCart.cartAdapter.notifyDataSetChanged();
                  if(HomeActivity.arrayListCart.size()>0){
                      boolean exists =false;
                      for (int i=0; i< HomeActivity.arrayListCart.size();i++){
                          if (HomeActivity.arrayListCart.get(i).getID() == food.getId()){
                              HomeActivity.arrayListCart.get(i).setSL(HomeActivity.arrayListCart.get(i).getSL() + 1);
+                             FragmentCart.cartAdapter.notifyDataSetChanged();
                              if(HomeActivity.arrayListCart.get(i).getSL() >10){
                                  HomeActivity.arrayListCart.get(i).setSL(10);
+                                 FragmentCart.cartAdapter.notifyDataSetChanged();
                              }
                              HomeActivity.arrayListCart.get(i).setPrice(food.getPrice() * HomeActivity.arrayListCart.get(i).getSL());
                              exists =true;
+                             FragmentCart.cartAdapter.notifyDataSetChanged();
                          }
                      }
                      if (exists ==false) {
                          HomeActivity.arrayListCart.add(new Cart(food.getId(), food.getFooodName(), food.getPrice(), food.getImgFood(), 1));
-                         HomeActivity.mCountFood = HomeActivity.getmCountFood() + 1;
+                         FragmentCart.cartAdapter.notifyDataSetChanged();
+                         HomeActivity.mCountFood ++;
+                         HomeActivity.checkCountFood();
+
+
                      }
                  }else {
                      HomeActivity.arrayListCart.add(new Cart(food.getId(),food.getFooodName(),food.getPrice(),food.getImgFood(),1));
+                     FragmentCart.cartAdapter.notifyDataSetChanged();
                      HomeActivity.mCountFood = 1;
+                     HomeActivity.checkCountFood();
 
                  }
+                FragmentCart.cartAdapter.notifyDataSetChanged();
+                 FragmentCart.EventUtil();
+
             }
         });
 

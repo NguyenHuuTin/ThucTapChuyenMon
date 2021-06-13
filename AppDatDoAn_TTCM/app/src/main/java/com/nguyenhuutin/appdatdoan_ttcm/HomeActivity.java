@@ -4,15 +4,18 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuItemImpl;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
@@ -30,56 +33,64 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager;
 import com.aurelhubert.ahbottomnavigation.notification.AHNotification;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.nguyenhuutin.adapter.CartAdapter;
 import com.nguyenhuutin.adapter.ViewPagerAdapter;
 import com.nguyenhuutin.adapter.menuAdapter;
 
+import com.nguyenhuutin.fragment.FragmentCart;
 import com.nguyenhuutin.fragment.FragmentHome;
 import com.nguyenhuutin.fragment.FragmentInfo;
 import com.nguyenhuutin.fragment.FragmentContactInfo;
 import com.nguyenhuutin.model.Cart;
 import com.nguyenhuutin.model.itemMenu;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class HomeActivity extends AppCompatActivity{
     Toolbar toolbar;
     DrawerLayout drawerLayout;
-//    NavigationView navigationView;
-//    ListView lvMenu;
-//    ArrayList<itemMenu> arrayList;
-//    menuAdapter adapter;
     public static AHBottomNavigation bottomNavigationView;
     AHBottomNavigationViewPager viewPager;
-    public static int mCountFood;
-
-    private static final int FRAGMENT_HOME = 1;
-    private static final int FRAGMENT_BOOK = 2;
-    private static final int FRAGMENT_MAP = 3;
-    private static final int FRAGMENT_INFO = 4;
-    private int curron_fragment = FRAGMENT_HOME;
+    public static int mCountFood = 0;
     public static ArrayList<Cart> arrayListCart;
-
-//    public static Users users;
+    TextView NameUser;
+    CircleImageView imguser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         addLink();
+        actionImg();
+        addEvent();
         actionToolBar();
         setUpViewPager();
-        setCountFoodInart(2);
-        //actionMenu();
-        //catchOnItemListView();
-//        replaceFragment(new FragmentHome());
+        checkCountFood();
+        if (arrayListCart != null){
+
+        }else {
+            arrayListCart = new ArrayList<>();
+        }
+    }
+
+    private void actionImg() {
+        if (MainActivity.img.toString().trim() =="none"){
+            imguser.setImageResource(R.drawable.baseline_account_circle_white_20);
+        }
+        else if (MainActivity.img.toString().trim() != "none"){
+            Picasso.with(HomeActivity.this).load(MainActivity.img.toString().trim()).into(imguser);
+        }
     }
 
     private void addLink() {
+        imguser = findViewById(R.id.imgUser);
+        NameUser = findViewById(R.id.NameUsers);
+        NameUser.setText(MainActivity.users.getUserName().toString().trim());
         toolbar = findViewById(R.id.Toolbar);
-//        drawerLayout = findViewById(R.id.Drawlayout);
-//        navigationView = findViewById(R.id.navigationview);
-//        lvMenu = findViewById(R.id.lvMenu);
         viewPager = findViewById(R.id.ViewPager);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setDefaultBackgroundColor(Color.parseColor("#006db3"));
@@ -105,15 +116,19 @@ public class HomeActivity extends AppCompatActivity{
 //                return true;
 //            }
 //        });
-        if (arrayListCart != null){
-
-        }else {
-            arrayListCart = new ArrayList<>();
-        }
 
 
-//        users = (Users) getIntent().getSerializableExtra("user");
 
+
+    }
+
+    private void addEvent() {
+        NameUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     private void actionToolBar() {
@@ -128,6 +143,20 @@ public class HomeActivity extends AppCompatActivity{
 //        });
 
     }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu,menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        switch (item.getItemId()){
+//
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
     private void setUpViewPager(){
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
@@ -199,13 +228,28 @@ public class HomeActivity extends AppCompatActivity{
 
 
     }
-    public void setCountFoodInart(int count){
+
+    public static void setCountFoodInart(int count){
+        mCountFood = count;
         AHNotification notification = new AHNotification.Builder()
                 .setText(String.valueOf(count))
-                .setBackgroundColor(ContextCompat.getColor(HomeActivity.this, R.color.bottomNavigationIcon))
-                .setTextColor(ContextCompat.getColor(HomeActivity.this, R.color.white))
                 .build();
         bottomNavigationView.setNotification(notification, 1);
+    }
+    public static void setNoCountFoodInart(){
+        AHNotification notification = new AHNotification.Builder()
+                .setText(null)
+                .build();
+        bottomNavigationView.setNotification(notification, 1);
+    }
+    public static void checkCountFood() {
+        if(mCountFood > 0){
+            setCountFoodInart(mCountFood);
+        }
+        else if (mCountFood == 0){
+            setNoCountFoodInart();
+
+        }
     }
 
     public static int getmCountFood() {

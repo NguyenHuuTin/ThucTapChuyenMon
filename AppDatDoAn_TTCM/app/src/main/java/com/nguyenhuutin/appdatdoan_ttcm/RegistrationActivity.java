@@ -36,7 +36,6 @@ import java.util.Map;
 public class RegistrationActivity extends AppCompatActivity {
     Button btnNext;
     EditText txtSDT, txtpassword, txtpassAgain;
-    Users users;
     private String email;
     private String name;
 
@@ -57,6 +56,7 @@ public class RegistrationActivity extends AppCompatActivity {
         if (acct != null) {
                 name = acct.getDisplayName().toString();
                 email = acct.getEmail().toString();
+                MainActivity.img = acct.getPhotoUrl().toString();
         }
     }
 
@@ -102,12 +102,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             Intent intent =  new Intent(RegistrationActivity.this, HomeActivity.class);
                             String SDT = txtSDT.getText().toString().trim();
                             String Pass = txtpassword.getText().toString().trim();
-//                            intent.putExtra("SDT",SDT);
-//                            intent.putExtra("Email",Email);
-//                            intent.putExtra("Name",Name);
-//                            intent.putExtra("Pass",Pass);
-                            users = new Users(SDT,email,name,Pass,2);
-                            intent.putExtra("user",users);
+                            MainActivity.users = new Users(SDT,email,name,Pass,2);
                             startActivity(intent);
                         }
                         else {
@@ -138,6 +133,5 @@ public class RegistrationActivity extends AppCompatActivity {
         };
         requestQueue.add(stringRequest);
     }
-
 
 }
