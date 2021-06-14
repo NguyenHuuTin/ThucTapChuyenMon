@@ -96,30 +96,6 @@ public class HomeActivity extends AppCompatActivity{
         bottomNavigationView.setDefaultBackgroundColor(Color.parseColor("#006db3"));
         bottomNavigationView.setAccentColor(Color.parseColor("#FF5722"));
         bottomNavigationView.setInactiveColor(Color.parseColor("#FFFFFF"));
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()){
-//                    case R.id.action_home:
-//                        viewPager.setCurrentItem(0);
-//                        break;
-//                    case R.id.action_cart:
-//                        viewPager.setCurrentItem(1);
-//                        break;
-//                    case R.id.action_search:
-//                        viewPager.setCurrentItem(2);
-//                        break;
-//                    case R.id.action_contect:
-//                        viewPager.setCurrentItem(3);
-//                        break;
-//                }
-//                return true;
-//            }
-//        });
-
-
-
-
     }
 
     private void addEvent() {
@@ -255,6 +231,7 @@ public class HomeActivity extends AppCompatActivity{
     public static int getmCountFood() {
         return mCountFood;
     }
+
     //    private void actionMenu() {
 //        arrayList = new ArrayList<>();
 //        arrayList.add(new itemMenu("Trang Chính",R.drawable.house));

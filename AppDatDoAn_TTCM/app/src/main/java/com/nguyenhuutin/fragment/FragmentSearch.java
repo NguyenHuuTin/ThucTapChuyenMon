@@ -62,7 +62,6 @@ public class FragmentSearch extends Fragment {
         recyclerViewSearch = view.findViewById(R.id.RecyclerViewSearch);
         arrayFoods = new ArrayList<>();
         edtSearch = view.findViewById(R.id.edtSearch);
-        edtSearch.setText("m");
         btnSearch = view.findViewById(R.id.btnSearch);
         viewEndAnimation = view.findViewById(R.id.view_end_animation);
         viewAnimation = view.findViewById(R.id.view_animation);
@@ -96,15 +95,18 @@ public class FragmentSearch extends Fragment {
     }
 
     private void addEvent() {
-        if (!edtSearch.getText().toString().trim().isEmpty()){
-            btnSearch.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!edtSearch.getText().toString().trim().isEmpty()){
+                    arrayFoods.clear();
                     GetDataFoods();
-
+                    foodAdapter.notifyDataSetChanged();
                 }
-            });
-        }
+
+            }
+        });
+
 
     }
     private void GetDataFoods() {
@@ -160,52 +162,7 @@ public class FragmentSearch extends Fragment {
                 return params;
             }
         };
-        requestQueue.add(stringRequest);;
-        
-//        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-//        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, Server.pathGetDataFoodSearch,null, new Response.Listener<JSONArray>() {
-//            @Override
-//            public void onResponse(JSONArray response) {
-//                if (response != null){
-//                    int ID = 0;
-//                    String namefood  = "";
-//                    int price = 0;
-//                    String image = "";
-//                    int tyoeoffood = 0;
-//                    for (int i=0;i<response.length();i++){
-//                        try {
-//                            JSONObject jsonObject = response.getJSONObject(i);
-//                            ID = jsonObject.getInt("id");
-//                            namefood = jsonObject.getString("tenmonan");
-//                            price = jsonObject.getInt("gia");
-//                            image = jsonObject.getString("hinhanh");
-//                            tyoeoffood = jsonObject.getInt("loaimonan");
-//                            arrayFoods.add(new Food(ID,namefood,price,image,tyoeoffood));
-//                            foodAdapter.notifyDataSetChanged();
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//
-//                        }
-//                    }
-//                }
-//
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Log.d("search",error.toString());
-//            }
-//        }
-//        ){
-//            @Nullable
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                Map<String, String> params = new HashMap<>();
-//                params.put("Search",edtSearch.getText().toString().trim());
-//                return params;
-//            }
-//        };
-//        requestQueue.add(jsonArrayRequest);
+        requestQueue.add(stringRequest);
 
     }
 }

@@ -98,6 +98,7 @@ public class BarBerCueActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent =new Intent(BarBerCueActivity.this, HomeActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.activity_right_in,R.anim.activity_right_out);
             }
         });
 

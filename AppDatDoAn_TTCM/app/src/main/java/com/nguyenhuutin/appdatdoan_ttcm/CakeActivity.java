@@ -98,6 +98,7 @@ public class CakeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent =new Intent(CakeActivity.this, HomeActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.activity_right_in,R.anim.activity_right_out);
             }
         });
 

@@ -42,7 +42,7 @@
         android:layout_width="4dp"
         android:layout_height="8dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="130dp"
         android:background="#F44336"
         android:visibility="invisible" />
     <ImageView

@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                     users = new Users(SDT,Email,Name,Pass,2);
                     img = acct.getPhotoUrl().toString();
                     startActivity(intent);
-                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                    overridePendingTransition(R.anim.activity_right_in,R.anim.activity_right_out);
                 }
             }
         });
@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+        overridePendingTransition(R.anim.activity_right_in,R.anim.activity_right_out);
     }
 
     @Override
@@ -146,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
             if(position == -1){
                 Intent intent = new Intent(MainActivity.this, RegistrationActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.activity_right_in,R.anim.activity_right_out);
             }
             else {
                 Intent intent = new Intent(MainActivity.this, HomeActivity.class);
@@ -157,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
                 users = new Users(SDT,Email,Name,Pass,2);
 //                intent.putExtra("user",arrayUsers.get(position));
                 startActivity(intent);
+                overridePendingTransition(R.anim.activity_right_in,R.anim.activity_right_out);
             }
 
 

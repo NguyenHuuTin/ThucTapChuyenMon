@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -97,6 +99,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ItemHolder> {
 
             }
         });
+        Animation animation = AnimationUtils.loadAnimation(context,R.anim.load_recycirlview);
+        holder.itemView.setAnimation(animation);
 
     }
 

@@ -81,11 +81,11 @@ public class RegistrationActivity extends AppCompatActivity {
                     else {
                         txtpassword.setText("");
                         txtpassAgain.setText("");
-                        Toast.makeText(RegistrationActivity.this, "Invalid PassWord", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegistrationActivity.this, "Vui lòng nhập mật khẩu", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else {
-                    Toast.makeText(RegistrationActivity.this, "Add My NumberPhone", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrationActivity.this, "Vui lòng nhập số điện thoại", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -104,6 +104,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             String Pass = txtpassword.getText().toString().trim();
                             MainActivity.users = new Users(SDT,email,name,Pass,2);
                             startActivity(intent);
+                            overridePendingTransition(R.anim.activity_right_in,R.anim.activity_right_out);
                         }
                         else {
                             Toast.makeText(RegistrationActivity.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
