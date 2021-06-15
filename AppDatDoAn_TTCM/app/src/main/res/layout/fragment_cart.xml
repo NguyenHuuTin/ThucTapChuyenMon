@@ -1,84 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/LinearTotal">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/txtnotification"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Giỏ hàng đang trống"
-                android:textSize="30dp" />
-            <ListView
-                android:id="@+id/lvCart"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        </FrameLayout>
-
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/LinearTotal"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentBottom="true"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp">
+        android:id="@+id/cardViewLocation">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tổng tiền:"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_marginTop="10dp"/>
-            <TextView
-                android:id="@+id/txtToltalMoney"
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/placeholder"
+                android:scaleType="fitXY"
+                android:padding="10dp"/>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="0 đ"
-                android:textStyle="italic|bold"
-                android:textSize="30sp"
-                android:gravity="right|bottom"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="5dp"
-                android:textColor="#090909"/>
+                android:layout_height="50dp">
+                <EditText
+                    android:id="@+id/edtAddressUsers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Bạn muốn giao hàng tới ?"
+                    android:inputType="textEmailAddress"
+                    android:background="@color/white"/>
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="470dp"
+        android:layout_marginBottom="7dp"
+        app:cardElevation="20dp">
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:id="@+id/txtnotification">
+                    <ImageView
+                        android:layout_width="300dp"
+                        android:layout_height="300dp"
+                        android:src="@drawable/noitemcart"/>
+
+                </LinearLayout>
+                <ListView
+                    android:id="@+id/lvCart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </FrameLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cardViewOrder"
+        app:cardElevation="30dp">
+        <LinearLayout
+            android:id="@+id/LinearTotal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="right"
-            android:layout_marginTop="30dp"
+            android:orientation="vertical"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp">
-<!--            <Button-->
-<!--                android:id="@+id/btnNextBuy"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Tiếp tục mua hàng"-->
-<!--                android:backgroundTint="#459848"-->
-<!--                android:layout_marginRight="15dp"/>-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tổng cộng:"
+                    android:textSize="21sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txtToltalMoney"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0 đ"
+                    android:textStyle="italic|bold"
+                    android:textSize="30sp"
+                    android:gravity="right|bottom"
+                    android:layout_marginRight="5dp"
+                    android:textColor="#090909"/>
+            </LinearLayout>
+
             <Button
                 android:id="@+id/btnOrder"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Đặt Hàng"
-                android:backgroundTint="#459848"/>
+                android:text="Đặt đơn"
+                android:textSize="20dp"
+                android:backgroundTint="@color/toolbarColor" />
         </LinearLayout>
-    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-</RelativeLayout>
+
+</LinearLayout>

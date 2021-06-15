@@ -83,19 +83,17 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ItemHolder> {
                          HomeActivity.arrayListCart.add(new Cart(food.getId(), food.getFooodName(), food.getPrice(), food.getImgFood(), 1));
                          FragmentCart.cartAdapter.notifyDataSetChanged();
                          HomeActivity.mCountFood ++;
-                         HomeActivity.checkCountFood();
-
-
                      }
                  }else {
                      HomeActivity.arrayListCart.add(new Cart(food.getId(),food.getFooodName(),food.getPrice(),food.getImgFood(),1));
                      FragmentCart.cartAdapter.notifyDataSetChanged();
                      HomeActivity.mCountFood = 1;
-                     HomeActivity.checkCountFood();
 
                  }
-                FragmentCart.cartAdapter.notifyDataSetChanged();
+                 FragmentCart.cartAdapter.notifyDataSetChanged();
                  FragmentCart.EventUtil();
+                HomeActivity.checkCountFood();
+                FragmentCart.checkData();
 
             }
         });

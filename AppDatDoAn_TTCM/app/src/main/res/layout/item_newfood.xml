@@ -12,7 +12,7 @@
         android:layout_gravity="fill"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
-        app:cardElevation="8dp"
+        app:cardElevation="10dp"
         android:id="@+id/cardView">
         <FrameLayout
             android:layout_width="match_parent"
@@ -25,28 +25,33 @@
                 android:layout_height="200dp"
                 android:layout_margin="5dp"
                 android:fitsSystemWindows="true"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_gravity="bottom"
                 android:layout_marginBottom="10dp"
-                android:layout_marginLeft="15dp">
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/txtfoodName"
                     android:text="Tên đồ ăn"
                     android:textSize="20sp"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:elevation="100dp"
+                    android:textStyle="bold"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/txtpriceFood"
                     android:textSize="17sp"
                     android:text="giá:"
-                    android:textColor="@color/white"/>
+                    android:elevation="100dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white" />
             </LinearLayout>
         </FrameLayout>
 

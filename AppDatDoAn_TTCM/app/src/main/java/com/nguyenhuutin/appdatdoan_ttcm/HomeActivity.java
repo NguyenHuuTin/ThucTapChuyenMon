@@ -1,48 +1,23 @@
 package com.nguyenhuutin.appdatdoan_ttcm;
 
-import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.MenuItemImpl;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager;
 import com.aurelhubert.ahbottomnavigation.notification.AHNotification;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
-import com.nguyenhuutin.adapter.CartAdapter;
 import com.nguyenhuutin.adapter.ViewPagerAdapter;
-import com.nguyenhuutin.adapter.menuAdapter;
 
-import com.nguyenhuutin.fragment.FragmentCart;
-import com.nguyenhuutin.fragment.FragmentHome;
-import com.nguyenhuutin.fragment.FragmentInfo;
-import com.nguyenhuutin.fragment.FragmentContactInfo;
 import com.nguyenhuutin.model.Cart;
-import com.nguyenhuutin.model.itemMenu;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
