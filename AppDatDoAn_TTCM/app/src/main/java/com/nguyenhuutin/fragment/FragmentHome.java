@@ -9,6 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.ViewFlipper;
 
 import androidx.annotation.Nullable;
@@ -26,6 +27,7 @@ import com.nguyenhuutin.adapter.NewFoodAdapter;
 import com.nguyenhuutin.appdatdoan_ttcm.BarBerCueActivity;
 import com.nguyenhuutin.appdatdoan_ttcm.CakeActivity;
 import com.nguyenhuutin.appdatdoan_ttcm.DrinkActivity;
+import com.nguyenhuutin.appdatdoan_ttcm.HomeActivity;
 import com.nguyenhuutin.appdatdoan_ttcm.HotPotActivity;
 import com.nguyenhuutin.appdatdoan_ttcm.LunchBoxActivity;
 import com.nguyenhuutin.appdatdoan_ttcm.NoodleActivity;
@@ -33,6 +35,7 @@ import com.nguyenhuutin.appdatdoan_ttcm.R;
 import com.nguyenhuutin.appdatdoan_ttcm.SweetActivity;
 import com.nguyenhuutin.model.Food;
 import com.nguyenhuutin.ultil.Server;
+import com.nguyenhuutin.ultil.TranslateAnimationUtil;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -42,12 +45,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class FragmentHome extends Fragment {
-    ImageButton btnLunchBox, btnNoodle, btnCake, btnSweet, btnDrink, btnHotPot, btnBarbecue;
+    ImageView btnLunchBox, btnNoodle, btnCake, btnSweet, btnDrink, btnHotPot, btnBarbecue;
     RecyclerView recyclerViewHome;
     ViewFlipper viewFlipper;
     View view;
     ArrayList<Food> arrayNewFood;
     NewFoodAdapter newFoodAdapter;
+    ScrollView ScroViewHome;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -60,13 +64,13 @@ public class FragmentHome extends Fragment {
     }
 
     private void addLink() {
-        btnBarbecue = (ImageButton) view.findViewById(R.id.btnBarbecue);
-        btnCake = (ImageButton) view.findViewById(R.id.btnCake);
-        btnHotPot = (ImageButton) view.findViewById(R.id.btnHotPot);
-        btnDrink = (ImageButton) view.findViewById(R.id.btnDrink);
-        btnSweet = (ImageButton) view.findViewById(R.id.btnSweet);
-        btnLunchBox = (ImageButton) view.findViewById(R.id.btnLunchBox);
-        btnNoodle = (ImageButton) view.findViewById(R.id.btnNoodle);
+        btnBarbecue = (ImageView) view.findViewById(R.id.btnBarbecue);
+        btnCake = (ImageView) view.findViewById(R.id.btnCake);
+        btnHotPot = (ImageView) view.findViewById(R.id.btnHotPot);
+        btnDrink = (ImageView) view.findViewById(R.id.btnDrink);
+        btnSweet = (ImageView) view.findViewById(R.id.btnSweet);
+        btnLunchBox = (ImageView) view.findViewById(R.id.btnLunchBox);
+        btnNoodle = (ImageView) view.findViewById(R.id.btnNoodle);
         viewFlipper = (ViewFlipper) view.findViewById(R.id.viewflipper);
         recyclerViewHome = (RecyclerView) view.findViewById(R.id.recyclerViewHome);
         arrayNewFood  =new ArrayList<>();
@@ -74,6 +78,10 @@ public class FragmentHome extends Fragment {
         recyclerViewHome.setHasFixedSize(true);
         recyclerViewHome.setLayoutManager(new GridLayoutManager(getActivity(),2));
         recyclerViewHome.setAdapter(newFoodAdapter);
+        ScroViewHome = view.findViewById(R.id.ScrollViewHome);
+        ScroViewHome.setOnTouchListener(new TranslateAnimationUtil(getActivity(),HomeActivity.bottomNavigationView));
+        recyclerViewHome.setOnTouchListener(new TranslateAnimationUtil(getActivity(),HomeActivity.bottomNavigationView));
+
 
     }
 

@@ -27,10 +27,12 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.nguyenhuutin.adapter.FoodAdapter;
+import com.nguyenhuutin.appdatdoan_ttcm.HomeActivity;
 import com.nguyenhuutin.appdatdoan_ttcm.R;
 import com.nguyenhuutin.model.Food;
 import com.nguyenhuutin.ultil.AnimationUltil;
 import com.nguyenhuutin.ultil.Server;
+import com.nguyenhuutin.ultil.TranslateAnimationUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -92,6 +94,7 @@ public class FragmentSearch extends Fragment {
         });
 
         recyclerViewSearch.setAdapter(foodAdapter);
+        recyclerViewSearch.setOnTouchListener(new TranslateAnimationUtil(getActivity(), HomeActivity.bottomNavigationView));
     }
 
     private void addEvent() {

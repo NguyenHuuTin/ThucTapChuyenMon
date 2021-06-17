@@ -16,6 +16,7 @@
         app:title="Food Order App"
         />
     <LinearLayout
+        android:id="@+id/LinearInfoUsers"
         android:layout_width="wrap_content"
         android:layout_height="?attr/actionBarSize"
         android:orientation="horizontal"

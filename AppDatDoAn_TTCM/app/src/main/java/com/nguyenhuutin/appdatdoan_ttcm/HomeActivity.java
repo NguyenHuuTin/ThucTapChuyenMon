@@ -1,8 +1,10 @@
 package com.nguyenhuutin.appdatdoan_ttcm;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +36,7 @@ public class HomeActivity extends AppCompatActivity{
     public static ArrayList<Cart> arrayListCart;
     TextView NameUser;
     CircleImageView imguser;
+    LinearLayout LinearInfoUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,12 +74,15 @@ public class HomeActivity extends AppCompatActivity{
         bottomNavigationView.setDefaultBackgroundColor(Color.parseColor("#006db3"));
         bottomNavigationView.setAccentColor(Color.parseColor("#FF5722"));
         bottomNavigationView.setInactiveColor(Color.parseColor("#FFFFFF"));
+        LinearInfoUser = findViewById(R.id.LinearInfoUsers);
     }
 
     private void addEvent() {
-        NameUser.setOnClickListener(new View.OnClickListener() {
+        LinearInfoUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, InfoOrderActivity.class);
+                startActivity(intent);
 
             }
         });

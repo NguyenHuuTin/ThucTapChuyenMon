@@ -16,4 +16,5 @@ public class Server {
     public static String pathInsertDataDH = "http://" + localhost + "/Server/InsertDataDH.php";
     public static String pathInsertDataCTDH = "http://" + localhost + "/Server/InsertDataCTDH.php";
     public static String pathGetDataFoodSearch = "http://" + localhost + "/Server/GetDataFoodSearch.php";
+    public static String pathGetDataOrder = "http://" + localhost + "/Server/GetDataOrder.php";
 }
