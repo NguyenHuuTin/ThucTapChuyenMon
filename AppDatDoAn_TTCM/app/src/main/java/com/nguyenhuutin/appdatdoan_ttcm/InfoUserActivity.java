@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -35,7 +36,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class InfoUserActivity extends AppCompatActivity {
-    TextView lblInfoSDT, lblInfoEmail, lblInfoName;
+    TextView lblInfoSDT, lblInfoEmail, lblInfoName, lbllogout;
     CheckBox ckbChangePass;
     EditText txtpass, txtnewpass, txtpassagain;
     Button btnchange;
@@ -74,6 +75,7 @@ public class InfoUserActivity extends AppCompatActivity {
         arrayUsers = new ArrayList<>();
         ckbChangePass = findViewById(R.id.ckbChangePass);
         CardViewChangePass.setVisibility(View.INVISIBLE);
+        lbllogout = findViewById(R.id.lbllogout);
     }
     private void ActionToolbar() {
         setSupportActionBar(toolbar);
@@ -89,6 +91,13 @@ public class InfoUserActivity extends AppCompatActivity {
 
     }
     private void addEvents() {
+        lbllogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(InfoUserActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
         ckbChangePass.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

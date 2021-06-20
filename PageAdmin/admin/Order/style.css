@@ -1,0 +1,64 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing:  border-box;
+	list-style-type: none;
+	text-decoration: none;
+	font-family: 'Poppins', sans-serif;
+}
+div.col-3{
+	background: #1e88e5;
+	color: white;
+}
+div.col-9{
+	background: white;
+}
+li{
+	color: white;
+	font-size: 1.0rem;
+}
+a{
+	color: white;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #1e88e5;
+    background-color: white;
+}
+.logo{
+	height: 100px;
+	color: white;
+	margin-top: 30px;
+	margin-left:20px;
+}
+div.row{
+	height: 750px;
+}
+.body{
+	width: 99%;
+}
+.header{
+	height: 75px;
+}
+.navbar{
+	height: 75px;
+	width: 100%;
+}
+.form-group{
+	width: 800px;
+	margin-top: 20px;
+}
+.container{
+	margin-top: 20px;
+	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 100%;
+	height: 570px;
+}
+.btn-danger {
+    color: #fff;
+    background-color: #009624;
+    border-color: #dc3545;
+}

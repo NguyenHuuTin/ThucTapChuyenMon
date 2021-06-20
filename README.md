@@ -11,7 +11,8 @@ Giảng viên: Thầy Nguyễn Lê Minh.
 ### 4.Sửa thông tin tài khoản mật khẩu
 ### 5.Google map chỉ vị trí của quán ăn và liên hệ với quán
 ### 6.Tìm kiếm món ăn theo tên
+### 7.xem, sửa,xóa món ăn cho admin
+### 8.xem đơn hàng,chi tiết đơn hàng
 ## Phần 3: Các chức năng chưa hoàn thành:
-### 1.Trang quản lý admin
-### 2.Lịch sử đặt hàng
+### 1. Biểu đồ thống kê cho trang admin
 Xin cám ơn!

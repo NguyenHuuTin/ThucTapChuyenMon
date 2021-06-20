@@ -52,6 +52,7 @@ public class OrderAdapter extends BaseAdapter {
             viewHolder.lblTime = (TextView) convertView.findViewById(R.id.lblTime);
             viewHolder.lbladdress = (TextView) convertView.findViewById(R.id.lblAddress);
             viewHolder.lblTotal = (TextView) convertView.findViewById(R.id.lblTotal);
+            viewHolder.lblstatus = (TextView)convertView.findViewById(R.id.lblstatus);
             convertView.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -61,10 +62,16 @@ public class OrderAdapter extends BaseAdapter {
         viewHolder.lblTime.setText(order.getTime());
         viewHolder.lbladdress.setText(order.getAddress());
         viewHolder.lblTotal.setText(order.getTotal());
+        if(order.getTt() == 0){
+            viewHolder.lblstatus.setText("Đã giao");
+        }else if (order.getTt() == 1){
+            viewHolder.lblstatus.setText("Đang chờ");
+        }
+
         return convertView;
     }
     public class ViewHolder{
-        public TextView lblidOrder, lblTime, lbladdress, lblTotal;
+        public TextView lblidOrder, lblTime, lbladdress, lblTotal, lblstatus;
 
     }
 }

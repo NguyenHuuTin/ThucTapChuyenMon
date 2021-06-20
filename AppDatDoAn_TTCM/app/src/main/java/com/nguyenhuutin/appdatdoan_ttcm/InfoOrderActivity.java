@@ -99,7 +99,8 @@ public class InfoOrderActivity extends AppCompatActivity {
                                     String Total = jsonObject.getString("total");
                                     String Time = jsonObject.getString("time");
                                     String address = jsonObject.getString("address");
-                                    arrayListOrder.add(new Order(ID,Time,address,Total));
+                                    int tt = jsonObject.getInt("tt");
+                                    arrayListOrder.add(new Order(ID,Time,address,Total,tt));
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                     Log.d("old", e.toString());

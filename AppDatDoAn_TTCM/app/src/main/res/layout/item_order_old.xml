@@ -103,6 +103,30 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
+                    android:text="Tình Trạng:"
+                    android:textSize="18sp"/>
+                <TextView
+                    android:id="@+id/lblstatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:text="25"
+                    android:textSize="20sp"
+                    android:gravity="right"
+                    android:textColor="#025306"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
                     android:text="Tổng tiền:"
                     android:textSize="18sp"/>
                 <TextView

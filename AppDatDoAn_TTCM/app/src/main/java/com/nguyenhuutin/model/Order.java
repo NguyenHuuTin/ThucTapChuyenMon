@@ -5,15 +5,17 @@ public class Order {
     public String time;
     public String address;
     public String total;
+    public int tt;
 
     public Order() {
     }
 
-    public Order(int id, String time, String address, String total) {
+    public Order(int id, String time, String address, String total, int tt) {
         this.id = id;
         this.time = time;
         this.address = address;
         this.total = total;
+        this.tt = tt;
     }
 
     public int getId() {
@@ -46,5 +48,13 @@ public class Order {
 
     public void setTotal(String total) {
         this.total = total;
+    }
+
+    public int getTt() {
+        return tt;
+    }
+
+    public void setTt(int tt) {
+        this.tt = tt;
     }
 }
