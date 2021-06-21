@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 17, 2021 lúc 05:10 PM
+-- Thời gian đã tạo: Th6 21, 2021 lúc 04:31 AM
 -- Phiên bản máy phục vụ: 10.4.19-MariaDB
 -- Phiên bản PHP: 8.0.6
 
@@ -67,12 +67,7 @@ INSERT INTO `ctdh` (`MaDH`, `MaMonAn`, `SL`, `Gia`, `TongTien`) VALUES
 (22, 57, 1, 15000, 15000),
 (23, 3, 1, 18000, 18000),
 (23, 57, 1, 15000, 15000),
-(23, 58, 1, 15000, 15000),
-(25, 3, 1, 18000, 18000),
-(25, 4, 1, 18000, 18000),
-(26, 61, 1, 12000, 12000),
-(27, 16, 1, 30000, 30000),
-(27, 20, 1, 60000, 60000);
+(23, 58, 1, 15000, 15000);
 
 -- --------------------------------------------------------
 
@@ -85,38 +80,57 @@ CREATE TABLE `donhang` (
   `SDT` varchar(50) NOT NULL,
   `ThanhTien` varchar(50) NOT NULL,
   `ThoiGian` datetime NOT NULL,
-  `DiaChi` varchar(250) NOT NULL
+  `DiaChi` varchar(250) NOT NULL,
+  `TinhTrang` bit(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `donhang`
 --
 
-INSERT INTO `donhang` (`MaDH`, `SDT`, `ThanhTien`, `ThoiGian`, `DiaChi`) VALUES
-(4, '0123456789', '15000', '2021-06-06 18:12:14', '448 le van viet'),
-(5, '0123456789', '30000', '2021-06-06 20:49:32', '448 le van viet'),
-(6, '0123456789', '30000', '2021-06-06 20:49:41', '448 le van viet'),
-(7, '0123456789', '30000', '2021-06-06 20:50:10', '448 le van viet'),
-(8, '0123456789', '30000', '2021-06-06 20:51:14', '448 le van viet'),
-(9, '0123456789', '18000', '2021-06-06 21:09:11', '448 le van viet'),
-(10, '0123456789', '18000', '2021-06-06 21:10:22', '448le van viet'),
-(11, '0123456789', '18000', '2021-06-06 21:32:58', 'a'),
-(12, '0123456789', '23000', '2021-06-06 21:42:59', 'm'),
-(13, '0123456789', '18000', '2021-06-06 21:57:51', 'k'),
-(14, '0123456789', '18000', '2021-06-06 22:14:25', 'j'),
-(15, '0123456789', '18000', '2021-06-06 22:15:20', 'l'),
-(16, '0123456789', '18000', '2021-06-06 22:15:59', 'n'),
-(17, '0123456789', '36000', '2021-06-07 00:54:04', '448 le van viet'),
-(18, '0123456789', '92000', '2021-06-07 08:31:11', 'KTX DH GTVT CSII'),
-(19, '0123456789', '224000', '2021-06-07 17:52:47', '3Vo van ngan thu duc'),
-(20, '0123456789', '66000', '2021-06-09 17:29:50', 'dd'),
-(21, '0123456789', '66000', '2021-06-12 11:33:25', 'q'),
-(22, '0123456789', '69000', '2021-06-12 16:10:45', '448 le van viet'),
-(23, '0123456789', '48000', '2021-06-13 10:12:39', '448 le van viet'),
-(24, '0123456789', '36000', '2021-06-15 18:03:30', '448 le van viet'),
-(25, '0123456789', '36000', '2021-06-15 18:03:30', '448 le van viet'),
-(26, '0123456789', '18000', '2021-06-15 22:46:40', 'ktx dhgtvt cs2'),
-(27, '0123456789', '30000', '2021-06-15 23:44:14', '448 le van viet');
+INSERT INTO `donhang` (`MaDH`, `SDT`, `ThanhTien`, `ThoiGian`, `DiaChi`, `TinhTrang`) VALUES
+(4, '0123456789', '15000', '2021-06-06 18:12:14', '448 le van viet', b'00'),
+(5, '0123456789', '30000', '2021-06-06 20:49:32', '448 le van viet', b'00'),
+(6, '0123456789', '30000', '2021-06-06 20:49:41', '448 le van viet', b'00'),
+(7, '0123456789', '30000', '2021-06-06 20:50:10', '448 le van viet', b'00'),
+(8, '0123456789', '30000', '2021-06-06 20:51:14', '448 le van viet', b'00'),
+(9, '0123456789', '18000', '2021-06-06 21:09:11', '448 le van viet', b'00'),
+(10, '0123456789', '18000', '2021-06-06 21:10:22', '448le van viet', b'00'),
+(11, '0123456789', '18000', '2021-06-06 21:32:58', 'a', b'00'),
+(12, '0123456789', '23000', '2021-06-06 21:42:59', 'm', b'00'),
+(13, '0123456789', '18000', '2021-06-06 21:57:51', 'k', b'00'),
+(14, '0123456789', '18000', '2021-06-06 22:14:25', 'j', b'00'),
+(15, '0123456789', '18000', '2021-06-06 22:15:20', 'l', b'00'),
+(16, '0123456789', '18000', '2021-06-06 22:15:59', 'n', b'00'),
+(17, '0123456789', '36000', '2021-06-07 00:54:04', '448 le van viet', b'00'),
+(18, '0123456789', '92000', '2021-06-07 08:31:11', 'KTX DH GTVT CSII', b'00'),
+(19, '0123456789', '224000', '2021-06-07 17:52:47', '3Vo van ngan thu duc', b'00'),
+(20, '0123456789', '66000', '2021-06-09 17:29:50', 'dd', b'00'),
+(21, '0123456789', '66000', '2021-06-12 11:33:25', 'q', b'00'),
+(22, '0123456789', '69000', '2021-06-12 16:10:45', '448 le van viet', b'01'),
+(23, '0123456789', '48000', '2021-06-13 10:12:39', '448 le van viet', b'00');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `khachhang`
+--
+
+CREATE TABLE `khachhang` (
+  `SDT` varchar(50) NOT NULL,
+  `Email` varchar(150) NOT NULL,
+  `TenDangNhap` varchar(150) NOT NULL,
+  `MatKhau` varchar(150) NOT NULL,
+  `MaNhom` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `khachhang`
+--
+
+INSERT INTO `khachhang` (`SDT`, `Email`, `TenDangNhap`, `MatKhau`, `MaNhom`) VALUES
+('0123456789', '5951071106@st.utc2.edu.vn', 'Nguyen Huu Tin', 'tin', 2),
+('0941866373', 'nguyenhuutin369@gmail.com', 'admin', 'admin', 1);
 
 -- --------------------------------------------------------
 
@@ -187,7 +201,6 @@ INSERT INTO `monan` (`MaMonAn`, `TenMonAn`, `Gia`, `HinhAnh`, `MaLoai`) VALUES
 (24, 'Hủ Tiếu Chay', 40000, 'https://img.canhdep.net/image/2016/05/ngay-he-thanh-dam-voi-hu-tieu-chay-sai-thanh.jpg', 2),
 (25, 'Hủ Tiếu', 45000, 'https://mustgo.vn/files/uploads/1567007856-maxresdefault.jpg', 2),
 (26, 'Bánh Canh Ghẹ Muối Ớt Xanh', 100000, 'https://th.bing.com/th/id/OIP.8QhDtiujhf-gm5IISN9USQHaE7?pid=ImgDet&rs=1', 2),
-(27, 'Mì Trộn', 35000, 'https://beptruong.edu.vn/wp-content/uploads/2013/06/mi-tron-han-quoc.jpg', 2),
 (28, 'Mì Quảng ', 30000, 'https://wiki-travel.com.vn/Uploads/Picture/anhthuy1202-183015013048-du-lich-quang-nam-mi-quang.jpg', 2),
 (29, 'Mì Xào', 50000, 'https://th.bing.com/th/id/Rf16aed5382d13ce0cf5628c1f3b106fa?rik=%2bhhTbLyyKKFv4Q&pid=ImgRaw', 2),
 (30, 'Bánh Mì Xíu Mại', 20000, 'https://thumbs.dreamstime.com/b/banh-mi-xiu-mai-vietnamese-sandwich-meatballs-tomato-sauce-do-chua-radish-carrot-pickle-cucumber-coriander-35622531.jpg', 3),
@@ -258,48 +271,27 @@ INSERT INTO `monan` (`MaMonAn`, `TenMonAn`, `Gia`, `HinhAnh`, `MaLoai`) VALUES
 (97, 'Bò Cuốn Lá Lốt', 70000, 'https://www.huongnghiepaau.com/wp-content/uploads/2019/01/bo-cuon-la-lot.jpg', 6),
 (98, 'Bạch Tuộc Nướng Sa Tế', 230000, 'https://travelgear.vn/blog/wp-content/uploads/2019/11/mon-nuong-binh-dan.jpg', 6),
 (99, 'Cá Hồi Nướng Chanh', 350000, 'https://th.bing.com/th/id/OIP.Laiv0CMJhV05Ifauksm6rAHaEc?pid=ImgDet&rs=1', 6),
-(100, 'Sò Huyết Nướng Sa Tế', 150000, 'https://travelgear.vn/blog/wp-content/uploads/2019/11/428_so_huyet_nuong.jpg', 6);
+(100, 'Sò Huyết Nướng Sa Tế', 150000, 'https://travelgear.vn/blog/wp-content/uploads/2019/11/428_so_huyet_nuong.jpg', 6),
+(102, 'Trà hoa đậu biết', 15000, 'https://luclam.vn/wp-content/uploads/2019/04/tra-hoa-10.jpg', 5);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `nhomquyen`
+-- Cấu trúc bảng cho bảng `nhomnguoidung`
 --
 
-CREATE TABLE `nhomquyen` (
-  `ID` int(11) NOT NULL,
-  `Permission` varchar(50) NOT NULL
+CREATE TABLE `nhomnguoidung` (
+  `MaNhom` int(11) NOT NULL,
+  `TenNhom` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `nhomquyen`
+-- Đang đổ dữ liệu cho bảng `nhomnguoidung`
 --
 
-INSERT INTO `nhomquyen` (`ID`, `Permission`) VALUES
-(1, 'Admin'),
-(2, 'Users');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `taikhoang`
---
-
-CREATE TABLE `taikhoang` (
-  `SDT` varchar(50) NOT NULL,
-  `Email` varchar(250) NOT NULL,
-  `TenDangNhap` varchar(250) NOT NULL,
-  `MatKhau` varchar(250) NOT NULL,
-  `Permission` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `taikhoang`
---
-
-INSERT INTO `taikhoang` (`SDT`, `Email`, `TenDangNhap`, `MatKhau`, `Permission`) VALUES
-('0123456789', '5951071106@st.utc2.edu.vn', 'Nguyen Huu Tin', 'tin', 2),
-('0941866373', 'nguyenhuutin369@gmail.com', 'admin', 'admin', 1);
+INSERT INTO `nhomnguoidung` (`MaNhom`, `TenNhom`) VALUES
+(1, 'admin'),
+(2, 'user');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -317,7 +309,14 @@ ALTER TABLE `ctdh`
 --
 ALTER TABLE `donhang`
   ADD PRIMARY KEY (`MaDH`),
-  ADD KEY `SDT` (`SDT`);
+  ADD KEY `donhang_ibfk_1` (`SDT`);
+
+--
+-- Chỉ mục cho bảng `khachhang`
+--
+ALTER TABLE `khachhang`
+  ADD PRIMARY KEY (`SDT`),
+  ADD KEY `MaNhom` (`MaNhom`);
 
 --
 -- Chỉ mục cho bảng `loaimonan`
@@ -333,19 +332,10 @@ ALTER TABLE `monan`
   ADD KEY `MaLoai` (`MaLoai`);
 
 --
--- Chỉ mục cho bảng `nhomquyen`
+-- Chỉ mục cho bảng `nhomnguoidung`
 --
-ALTER TABLE `nhomquyen`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Chỉ mục cho bảng `taikhoang`
---
-ALTER TABLE `taikhoang`
-  ADD PRIMARY KEY (`SDT`),
-  ADD UNIQUE KEY `Email` (`Email`),
-  ADD UNIQUE KEY `SDT` (`SDT`),
-  ADD KEY `Permission` (`Permission`);
+ALTER TABLE `nhomnguoidung`
+  ADD PRIMARY KEY (`MaNhom`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
@@ -355,7 +345,7 @@ ALTER TABLE `taikhoang`
 -- AUTO_INCREMENT cho bảng `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `MaDH` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `MaDH` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT cho bảng `loaimonan`
@@ -367,13 +357,13 @@ ALTER TABLE `loaimonan`
 -- AUTO_INCREMENT cho bảng `monan`
 --
 ALTER TABLE `monan`
-  MODIFY `MaMonAn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `MaMonAn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
--- AUTO_INCREMENT cho bảng `nhomquyen`
+-- AUTO_INCREMENT cho bảng `nhomnguoidung`
 --
-ALTER TABLE `nhomquyen`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `nhomnguoidung`
+  MODIFY `MaNhom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -390,19 +380,19 @@ ALTER TABLE `ctdh`
 -- Các ràng buộc cho bảng `donhang`
 --
 ALTER TABLE `donhang`
-  ADD CONSTRAINT `donhang_ibfk_1` FOREIGN KEY (`SDT`) REFERENCES `taikhoang` (`SDT`);
+  ADD CONSTRAINT `donhang_ibfk_1` FOREIGN KEY (`SDT`) REFERENCES `khachhang` (`SDT`);
+
+--
+-- Các ràng buộc cho bảng `khachhang`
+--
+ALTER TABLE `khachhang`
+  ADD CONSTRAINT `khachhang_ibfk_1` FOREIGN KEY (`MaNhom`) REFERENCES `nhomnguoidung` (`MaNhom`);
 
 --
 -- Các ràng buộc cho bảng `monan`
 --
 ALTER TABLE `monan`
   ADD CONSTRAINT `monan_ibfk_1` FOREIGN KEY (`MaLoai`) REFERENCES `loaimonan` (`MaLoai`);
-
---
--- Các ràng buộc cho bảng `taikhoang`
---
-ALTER TABLE `taikhoang`
-  ADD CONSTRAINT `taikhoang_ibfk_1` FOREIGN KEY (`Permission`) REFERENCES `nhomquyen` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
